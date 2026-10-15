@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #040711;
+  --bg-card: rgba(13, 20, 38, 0.75);
+  --bg-card-hover: rgba(20, 31, 58, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(56, 189, 248, 0.4);
+  --brand-cyan: #06b6d4;
+  --brand-blue: #3b82f6;
+  --brand-indigo: #6366f1;
+  --brand-amber: #f59e0b;
+  --brand-orange: #f97316;
+  --brand-emerald: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Malayalam', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: #f1f5f9;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 85% 20%, rgba(6, 182, 212, 0.1), transparent),
+    radial-gradient(ellipse 50% 30% at 15% 45%, rgba(249, 115, 22, 0.08), transparent);
+  background-attachment: fixed;
+}
+
+/* Malayalam Text specific class */
+.font-ml {
+  font-family: 'Noto Sans Malayalam', 'Manjari', sans-serif;
+}
+
+/* Elegant Certificate Font */
+.font-serif-cert {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Ambient Subtle Grid Pattern */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #040711;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Monospace Font for Code */
+.font-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Ultra-Premium Glass Cards */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(10, 16, 31, 0.85) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(56, 189, 248, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Primary Glass Card with Neon Edge */
+.hero-glass-frame {
+  background: linear-gradient(145deg, rgba(16, 24, 48, 0.9) 0%, rgba(8, 12, 26, 0.95) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.8),
+    0 0 40px -10px rgba(56, 189, 248, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Certificate Outer Frame with Metallic Border & Watermark */
+.cert-frame {
+  background: radial-gradient(circle at center, #0f172a 0%, #070c18 100%);
+  border: 10px solid #1e293b;
+  outline: 2px solid #d97706;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(217, 119, 6, 0.1);
+  position: relative;
+}
+
+.cert-gold-badge {
+  background: radial-gradient(circle, #f59e0b 0%, #b45309 100%);
+  border: 2px solid #fef3c7;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* Shimmer Button Effect */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(30deg);
+  animation: shimmerMove 4s infinite;
+}
+@keyframes shimmerMove {
+  0% { left: -60%; }
+  30% { left: 140%; }
+  100% { left: 140%; }
+}
+
+/* Nav Active Pill */
+.nav-tab.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.15) 100%);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Wire Animation for Simulation */
+@keyframes wireCurrentFlow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.active-wire {
+  stroke-dasharray: 8 4;
+  animation: wireCurrentFlow 0.8s linear infinite;
+}
+
+/* Circuit Pin Hover */
+.circuit-pin {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.circuit-pin:hover {
+  transform: scale(1.35);
+  filter: drop-shadow(0 0 6px #38bdf8);
+}
+.circuit-pin.selected-pin {
+  transform: scale(1.45);
+  stroke: #f59e0b !important;
+  stroke-width: 3px !important;
+  fill: #fbbf24 !important;
+  filter: drop-shadow(0 0 8px #f59e0b);
+}
+
+/* Hardware Board Realistic Look */
+.pcb-board {
+  background: linear-gradient(135deg, #0b4e4e 0%, #00363a 100%);
+  border: 2px solid #087071;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Modal Smooth Animation */
+.modal-overlay {
+  background: rgba(2, 6, 18, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Floating WhatsApp Badge */
+.whatsapp-float {
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px -5px rgba(37, 211, 102, 0.6);
+}
+
+/* Print Styles for Certificate Download / Export */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #certificatePrintableArea, #certificatePrintableArea * {
+    visibility: visible;
+  }
+  #certificatePrintableArea {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    background: #090e1d !important;
+    border: 8px solid #b45309 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

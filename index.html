@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="ml" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello2-IoT | Kerala's #1 Micro-IoT & Robotics Learning Platform for Kids</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#040711',
+              card: '#0a1020',
+              cyan: '#06b6d4',
+              blue: '#3b82f6',
+              indigo: '#6366f1',
+              orange: '#f97316',
+              amber: '#f59e0b',
+              emerald: '#10b981'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#040711] text-slate-100 antialiased selection:bg-indigo-500 selection:text-white bg-grid">
+
+  <!-- TOP NOTIFICATION BANNER -->
+  <div class="bg-gradient-to-r from-orange-600 via-amber-600 to-emerald-600 py-2 px-4 text-center text-xs md:text-sm font-semibold text-white tracking-wide shadow-md flex items-center justify-center space-x-2">
+    <span data-ml-html="✨ <strong>സ്പെഷ്യൽ ഓഫർ:</strong> കേരളത്തിലെ എല്ലാ 14 ജില്ലകളിലേക്കും സൗജന്യ ഹോം ഡെലിവറി! സ്റ്റാർട്ടർ കിറ്റ് വെറും ₹399 മാത്രം!" data-en-html="✨ <strong>Special Offer:</strong> Free Home Delivery Across All 14 Districts of Kerala! Starter Kit just ₹399!">✨ <strong>സ്പെഷ്യൽ ഓഫർ:</strong> കേരളത്തിലെ എല്ലാ 14 ജില്ലകളിലേക്കും സൗജന്യ ഹോം ഡെലിവറി! സ്റ്റാർട്ടർ കിറ്റ് വെറും ₹399 മാത്രം!</span>
+    <span class="bg-black/30 backdrop-blur-md px-2 py-0.5 rounded text-[11px] font-extrabold border border-white/20 uppercase tracking-wider hidden sm:inline-block" data-ml="ലിമിറ്റഡ് സ്ലോട്ടുകൾ" data-en="Limited Slots">Limited Slots</span>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-50 bg-[#060b18]/85 backdrop-blur-xl border-b border-white/[0.08] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="#" onclick="switchTab('home')" class="flex items-center space-x-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-all duration-300">
+            <i data-lucide="zap" class="w-6 h-6 text-white fill-white"></i>
+          </div>
+          <div>
+            <div class="text-xl font-extrabold tracking-tight text-white flex items-center">
+              Hello<span class="text-cyan-400">2</span>-IoT
+              <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">PRO</span>
+            </div>
+            <div class="text-[11px] font-medium text-slate-400 tracking-wide" data-ml="കേരളത്തിലെ #1 മൈക്രോ-IoT ലേണിംഗ് ഹബ്" data-en="Kerala's #1 Micro-IoT Learning Hub">Kerala's #1 Micro-IoT Learning Hub</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Tabs -->
+        <nav class="hidden lg:flex items-center space-x-1 bg-slate-900/60 p-1.5 rounded-2xl border border-white/[0.06]">
+          <button data-tab="home" class="nav-tab active px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span data-ml="ഹോം" data-en="Home">ഹോം</span>
+          </button>
+          <button data-tab="projects" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+            <i data-lucide="layout-grid" class="w-4 h-4"></i>
+            <span data-ml="പ്രോജക്ട് ലാബ്" data-en="Project Lab">പ്രോജക്ട് ലാബ്</span>
+          </button>
+          <button data-tab="wokwi" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+            <i data-lucide="cpu" class="w-4 h-4"></i>
+            <span data-ml="Wokwi ലാബ്" data-en="Wokwi Lab">Wokwi ലാബ്</span>
+          </button>
+          <button data-tab="videos" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+            <i data-lucide="play-circle" class="w-4 h-4"></i>
+            <span data-ml="മലയാളം വീഡിയോകൾ" data-en="Video Academy">മലയാളം വീഡിയോകൾ</span>
+          </button>
+          <button data-tab="kits" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+            <i data-lucide="package" class="w-4 h-4"></i>
+            <span data-ml="കിറ്റ് & പ്ലാൻ" data-en="Kits & Plans">കിറ്റ് & പ്ലാൻ</span>
+          </button>
+          <button data-tab="workshops" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span data-ml="ലൈവ് ബാച്ചുകൾ" data-en="Live Batches">ലൈവ് ബാച്ചുകൾ</span>
+          </button>
+          <button data-tab="faq" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span data-ml="FAQ" data-en="FAQ">FAQ</span>
+          </button>
+        </nav>
+
+        <!-- Right Action Elements -->
+        <div class="flex items-center space-x-3">
+          
+          <!-- Bilingual Language Switcher -->
+          <div class="bg-slate-900/80 border border-white/[0.08] rounded-full p-1 flex items-center space-x-1">
+            <button data-lang="ml" class="lang-btn px-2.5 py-1 text-xs rounded-full font-bold bg-indigo-600 text-white shadow-sm">മലയാളം</button>
+            <button data-lang="en" class="lang-btn px-2.5 py-1 text-xs rounded-full font-medium text-slate-400 hover:text-white">EN</button>
+          </div>
+
+          <!-- Primary Kit Order Button -->
+          <button data-plan="The Kerala Kid-Safe IoT Starter Kit (₹399)" class="btn-open-order btn-shimmer bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm flex items-center space-x-2 shadow-lg shadow-orange-500/25 transition-all transform active:scale-95">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            <span data-ml="കിറ്റ് വാങ്ങുക (₹399)" data-en="Buy Starter Kit (₹399)">കിറ്റ് വാങ്ങുക (₹399)</span>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+    <!-- ============================================================== -->
+    <!-- SECTION 1: HOME (ഫ്രണ്ട് പേജ് - HIGH PROFESSIONAL HERO)         -->
+    <!-- ============================================================== -->
+    <section id="section-home" class="content-section space-y-20">
+      
+      <!-- HERO GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Copy & High-Converting Value Proposition -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Social Proof Badge -->
+          <div class="inline-flex items-center space-x-2.5 bg-indigo-950/60 border border-indigo-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-indigo-300 shadow-inner">
+            <span class="flex h-2 w-2 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span data-ml="കേരളത്തിലെ കൊച്ചു ശാസ്ത്രജ്ഞർക്കായി ഒരുക്കിയ ആദ്യ പ്ലാറ്റ്‌ഫോം" data-en="Kerala's #1 Kid-Safe STEM & Robotics Innovation Platform">
+              കേരളത്തിലെ കൊച്ചു ശാസ്ത്രജ്ഞർക്കായി ഒരുക്കിയ ആദ്യ പ്ലാറ്റ്‌ഫോം
+            </span>
+          </div>
+
+          <!-- Hero Main Headline -->
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black tracking-tight text-white leading-[1.2]">
+            <span data-ml="വെറും മൊബൈൽ ഗെയിമിംഗ് മാറ്റി സ്വന്തമായി" data-en="Replace Mobile Addiction with Real-World">വെറും മൊബൈൽ ഗെയിമിംഗ് മാറ്റി സ്വന്തമായി</span>
+            <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent block mt-1.5" data-ml="റോബോട്ടുകൾ ഉണ്ടാക്കാം!" data-en="Robotics & IoT Gadgets!">റോബോട്ടുകൾ ഉണ്ടാക്കാം!</span>
+          </h1>
+
+          <!-- Hero Subtitle -->
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl font-ml" data-ml="കേരളത്തിലെ 2 മുതൽ 6 ക്ലാസ്സ് വരെയുള്ള കുട്ടികൾക്കായി. വീട്ടിലേക്ക് എത്തുന്ന ആർഡ്യുയിനോ സെൻസർ കിറ്റും, മലയാളത്തിലുള്ള എളുപ്പമുള്ള പ്രൊജക്റ്റ് നോട്ടുകളും വീഡിയോകളും വെറും ₹39/മാസത്തിൽ." data-en="Engineered for Class 2 to 6 students across Kerala. Hands-on Arduino hardware starter box delivered directly to your doorstep, with simple Malayalam video classes and live mentor support for just ₹39/month.">
+            കേരളത്തിലെ 2 മുതൽ 6 ക്ലാസ്സ് വരെയുള്ള കുട്ടികൾക്കായി. വീട്ടിലേക്ക് എത്തുന്ന ആർഡ്യുയിനോ സെൻസർ കിറ്റും, മലയാളത്തിലുള്ള എളുപ്പമുള്ള പ്രൊജക്റ്റ് നോട്ടുകളും വീഡിയോകളും വെറും ₹39/മാസത്തിൽ.
+          </p>
+
+          <!-- Pricing Combo Card -->
+          <div class="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-xl border border-white/[0.08] shadow-xl">
+            <div class="flex items-center space-x-3.5 w-full sm:w-auto">
+              <div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-inner">
+                <i data-lucide="package-check" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-wider text-slate-400 font-extrabold" data-ml="ഹാർഡ്‌വെയർ സ്റ്റാർട്ടർ ബോക്സ്" data-en="HARDWARE STARTER BOX">HARDWARE STARTER BOX</div>
+                <div class="text-xl font-black text-white flex items-center space-x-2">
+                  <span>₹399</span>
+                  <span class="text-xs text-slate-500 line-through font-normal">₹1,299</span>
+                  <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-bold" data-ml="69% ലാഭം" data-en="SAVE 69%">SAVE 69%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-slate-600 font-bold text-xl hidden sm:block">+</div>
+
+            <div class="flex items-center space-x-3.5 w-full sm:w-auto">
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-inner">
+                <i data-lucide="video" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <div class="text-[11px] uppercase tracking-wider text-slate-400 font-extrabold" data-ml="മൈക്രോ-സബ്‌സ്‌ക്രിപ്‌ഷൻ" data-en="MICRO-SUBSCRIPTION">MICRO-SUBSCRIPTION</div>
+                <div class="text-xl font-black text-white flex items-center space-x-1">
+                  <span>₹39</span>
+                  <span class="text-xs text-slate-400 font-normal" data-ml="/ മാസം" data-en="/ Month">/ Month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons Group -->
+          <div class="flex flex-wrap gap-4 pt-2">
+            <button onclick="switchTab('projects')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl text-sm flex items-center space-x-2.5 shadow-lg shadow-indigo-600/30 transition transform hover:-translate-y-0.5 active:scale-95">
+              <i data-lucide="play" class="w-4 h-4 fill-white"></i>
+              <span data-ml="പ്രോജക്റ്റുകൾ കാണുക" data-en="Explore Projects">പ്രോജക്റ്റുകൾ കാണുക</span>
+            </button>
+
+            <button onclick="switchTab('wokwi')" class="glass-panel hover:bg-slate-800/80 text-amber-400 font-bold px-5 py-3.5 rounded-xl text-sm border border-amber-400/30 flex items-center space-x-2 transition transform hover:-translate-y-0.5">
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              <span data-ml="Wokwi പ്രാക്ടിക്കൽ ലാബ്" data-en="Wokwi Practical Lab">Wokwi പ്രാക്ടിക്കൽ ലാബ്</span>
+            </button>
+
+            <button data-plan="The Kerala Kid-Safe IoT Starter Kit (₹399)" class="btn-open-order btn-shimmer bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black px-6 py-3.5 rounded-xl text-sm flex items-center space-x-2 shadow-xl shadow-orange-500/25 transition transform hover:-translate-y-0.5 active:scale-95">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+              <span data-ml="സ്റ്റാർട്ടർ കിറ്റ് ഓർഡർ ചെയ്യുക (₹399)" data-en="Order Starter Box (₹399)">സ്റ്റാർട്ടർ കിറ്റ് ഓർഡർ ചെയ്യുക (₹399)</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges Row -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-white/[0.08] text-xs text-slate-300 font-medium">
+            <div class="flex items-center space-x-2">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+              <span data-ml="100% സോൾഡറിംഗ് രഹിതം" data-en="100% Solderless">100% Solderless</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="truck" class="w-4 h-4 text-cyan-400"></i>
+              <span data-ml="കേരളത്തിൽ സൗജന്യ ഡെലിവറി" data-en="Free Delivery in Kerala">Free Delivery in Kerala</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="languages" class="w-4 h-4 text-indigo-400"></i>
+              <span data-ml="മലയാളം + English" data-en="Malayalam + English">മലയാളം + English</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+              <span data-ml="ഇന്നൊവേഷൻ സർട്ടിഫിക്കറ്റ്" data-en="Certificate of Innovation">Certificate of Innovation</span>
+            </div>
+          </div>
+
+          <!-- Parent Ratings & Social Proof -->
+          <div class="flex items-center space-x-3 text-xs text-slate-400 pt-1">
+            <div class="flex text-amber-400 space-x-0.5">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            </div>
+            <span data-ml-html="കേരളത്തിലെ 480+ മാതാപിതാക്കളുടെ <strong class='text-white'>4.9 / 5</strong> റേറ്റിംഗ്" data-en-html="<strong class='text-white'>4.9 / 5</strong> rating from 480+ parents across Kerala"><strong class="text-white">4.9 / 5</strong> rating from 480+ parents across Kerala</span>
+          </div>
+
+        </div>
+
+        <!-- Right Column: USER'S REQUESTED PHOTO IN ULTRA-PROFESSIONAL SHOWCASE -->
+        <div class="lg:col-span-5">
+          <div class="hero-glass-frame rounded-3xl p-4 sm:p-5 relative group overflow-hidden">
+            
+            <!-- Top Status Pill -->
+            <div class="flex items-center justify-between mb-3 px-1">
+              <span class="inline-flex items-center space-x-1.5 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span data-ml="100% കിഡ്-സേഫ് 5V USB സ്റ്റാൻഡേർഡ്" data-en="100% Kid-Safe 5V USB Standard">100% Kid-Safe 5V USB Standard</span>
+              </span>
+              <span class="text-[11px] text-cyan-300 font-semibold tracking-wide flex items-center space-x-1">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span data-ml="ട്യൂട്ടർമാർ: അൽഫീന എ, സൽമ എ ആർ" data-en="Tutors: Alfina A & Salma A R">Tutors: Alfina A & Salma A R</span>
+              </span>
+            </div>
+
+            <!-- Featured Image Container (User Uploaded Photo) -->
+            <div class="relative rounded-2xl overflow-hidden border border-white/[0.12] bg-slate-950 shadow-2xl group-hover:border-cyan-400/50 transition duration-500">
+              <img src="assets/images/student_iot_car.jpg" 
+                   alt="Kerala Student Innovators showcasing IoT Smart Car" 
+                   class="w-full h-auto object-cover max-h-[480px] transform group-hover:scale-[1.02] transition duration-700">
+              
+              <!-- Subtle Gradient Vignette Overlay for Crisp Readability -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-black/30 pointer-events-none"></div>
+
+              <!-- Top Floating Badge -->
+              <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-bold text-white border border-white/10 flex items-center space-x-1.5 shadow-lg">
+                <i data-lucide="award" class="w-3.5 h-3.5 text-amber-400"></i>
+                <span data-ml="അൽഫീന എ, സൽമ എ ആർ എന്നിവരുടെ ശിക്ഷണത്തിൽ" data-en="Guided by Tutors Alfina A & Salma A R">Guided by Tutors Alfina A & Salma A R</span>
+              </div>
+
+              <!-- Floating Live Simulator Button -->
+              <div class="absolute bottom-4 right-4">
+                <button onclick="switchTab('projects'); renderProject(10);" class="btn-shimmer bg-indigo-600/90 hover:bg-indigo-500 text-white backdrop-blur-md px-4 py-2 rounded-xl text-xs font-extrabold border border-indigo-400/40 flex items-center space-x-2 shadow-xl transition transform active:scale-95">
+                  <i data-lucide="cpu" class="w-4 h-4 text-cyan-300"></i>
+                  <span data-ml="വർച്വൽ ലാബ് തുറക്കുക ➔" data-en="Launch Virtual Lab ➔">Launch Virtual Lab ➔</span>
+                </button>
+              </div>
+
+              <!-- Bottom Overlay Description -->
+              <div class="absolute bottom-4 left-4 text-left pointer-events-none hidden sm:block">
+                <div class="text-[11px] uppercase tracking-wider font-extrabold text-cyan-400" data-ml="ടെലിമെട്രി ലൈവ്" data-en="TELEMETRY ONLINE">TELEMETRY ONLINE</div>
+                <div class="text-sm font-black text-white" data-ml="IoT സ്മാർട്ട് കാർ • മെന്റർമാർ: അൽഫീന എ & സൽമ എ ആർ" data-en="IoT Smart Car • Mentored by Alfina A & Salma A R">IoT Smart Car • Mentored by Alfina A & Salma A R</div>
+              </div>
+            </div>
+
+            <!-- Bottom Subcard Details -->
+            <div class="mt-4 bg-slate-900/90 border border-white/[0.08] rounded-2xl p-4 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-indigo-400">
+                  <i data-lucide="car" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-white" data-ml="IoT സ്മാർട്ട് കാർ + 5 സെൻസറുകൾ" data-en="IoT Smart Car + 5 Sensors">IoT Smart Car + 5 Sensors</div>
+                  <div class="text-[11px] text-slate-400"><span data-ml="ട്യൂട്ടർമാർ: " data-en="Tutors: ">Tutors: </span><span class="text-amber-300 font-semibold">Alfina A</span> & <span class="text-amber-300 font-semibold">Salma A R</span></div>
+                </div>
+              </div>
+              <button data-plan="The Kerala Kid-Safe IoT Starter Kit (₹399)" class="btn-open-order bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-4 py-2 rounded-xl text-xs shadow-md transition">
+                <span data-ml="ഓർഡർ ബോക്സ്" data-en="Order Box">Order Box</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- KEY STATS COUNTERS -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+        <div class="glass-panel rounded-2xl p-6 text-center border border-white/[0.08]">
+          <div class="text-3xl sm:text-4xl font-black text-cyan-400">10+</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1" data-ml="ഹാൻഡ്സ്-ഓൺ IoT പ്രൊജക്റ്റുകൾ" data-en="Hands-on IoT Projects">Hands-on IoT Projects</div>
+          <div class="text-[11px] text-slate-500 mt-0.5" data-ml="നൈറ്റ് ലാമ്പ് മുതൽ സ്മാർട്ട് കാർ വരെ" data-en="From Night Lamp to Smart Car">From Night Lamp to Smart Car</div>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 text-center border border-white/[0.08]">
+          <div class="text-3xl sm:text-4xl font-black text-emerald-400" data-ml="₹39 / മാസം" data-en="₹39 / Mo">₹39 / Mo</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1" data-ml="പോക്കറ്റ് മണി നിരക്ക്" data-en="Pocket-Money Pricing">Pocket-Money Pricing</div>
+          <div class="text-[11px] text-slate-500 mt-0.5" data-ml="എല്ലാ കുടുംബങ്ങൾക്കും താങ്ങാവുന്നത്" data-en="Affordable for every family">Affordable for every family</div>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 text-center border border-white/[0.08]">
+          <div class="text-3xl sm:text-4xl font-black text-amber-400" data-ml="14 ജില്ലകൾ" data-en="14 Districts">14 Districts</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1" data-ml="കേരളത്തിൽ സൗജന്യ ഡെലിവറി" data-en="Free Delivery in Kerala">Free Delivery in Kerala</div>
+          <div class="text-[11px] text-slate-500 mt-0.5" data-ml="തിരുവനന്തപുരം മുതൽ കാസർഗോഡ് വരെ" data-en="Trivandrum to Kasaragod">Trivandrum to Kasaragod</div>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 text-center border border-white/[0.08]">
+          <div class="text-3xl sm:text-4xl font-black text-indigo-400" data-ml="100% സുരക്ഷിതം" data-en="100% Safe">100% Safe</div>
+          <div class="text-xs sm:text-sm text-slate-300 font-semibold mt-1" data-ml="സോൾഡറിംഗ് രഹിത 5V സ്റ്റാൻഡേർഡ്" data-en="Solderless 5V Standard">Solderless 5V Standard</div>
+          <div class="text-[11px] text-slate-500 mt-0.5" data-ml="ഷോക്ക് അടിക്കാനുള്ള സാധ്യതയില്ല" data-en="Zero high voltage or shocks">Zero high voltage or shocks</div>
+        </div>
+      </div>
+
+      <!-- LEARNING PATHWAY (GRADES 2 TO 6) -->
+      <div class="space-y-6 pt-6">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-cyan-400" data-ml="ഘട്ടം ഘട്ടമായുള്ള സിലബസ്" data-en="STRUCTURED CURRICULUM">STRUCTURED CURRICULUM</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white" data-ml="ക്ലാസ്സ് 2 മുതൽ 6 വരെയുള്ള സിലബസ് റോഡ്മാപ്പ്" data-en="Class 2 to Class 6 Syllabus Roadmap">ക്ലാസ്സ് 2 മുതൽ 6 വരെയുള്ള സിലബസ് റോഡ്മാപ്പ്</h2>
+          <p class="text-sm text-slate-400 font-ml" data-ml="കുട്ടികളുടെ പ്രായത്തിനനുസരിച്ച് ലളിതമായി ഘട്ടം ഘട്ടമായി പഠിക്കാം" data-en="Structured step-by-step learning progression tailored to each grade level">കുട്ടികളുടെ പ്രായത്തിനനുസരിച്ച് ലളിതമായി ഘട്ടം ഘട്ടമായി പഠിക്കാം</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Step 1 -->
+          <div class="glass-panel rounded-3xl p-6 border border-white/[0.08] space-y-4 relative">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+              <i data-lucide="zap" class="w-6 h-6"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-indigo-400" data-ml="സ്റ്റേജ് 1 • ക്ലാസ്സ് 2 - 3" data-en="STAGE 1 • CLASSES 2 - 3">STAGE 1 • CLASSES 2 - 3</span>
+              <h3 class="text-lg font-bold text-white">Junior Starters</h3>
+              <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="മാജിക് ലൈറ്റുകൾ, ഫയർഫ്ലൈ സർക്യൂട്ടുകൾ, സൗണ്ട് ബസർ എന്നിവ ലളിതമായ പരീക്ഷണങ്ങളിലൂടെ മനസ്സിലാക്കുന്നു." data-en="Understand magic night lights, firefly sensor circuits, and electronic sound buzzers with friendly hands-on kits.">
+                മാജിക് ലൈറ്റുകൾ, ഫയർഫ്ലൈ സർക്യൂട്ടുകൾ, സൗണ്ട് ബസർ എന്നിവ ലളിതമായ പരീക്ഷണങ്ങളിലൂടെ മനസ്സിലാക്കുന്നു.
+              </p>
+            </div>
+            <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-white/[0.06]">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Project 1: Magic Auto-Night Lamp</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Project 6: Musical Color Buzzer</span></li>
+            </ul>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="glass-panel rounded-3xl p-6 border-2 border-indigo-500/40 space-y-4 relative shadow-xl shadow-indigo-500/10">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+              <i data-lucide="compass" class="w-6 h-6"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-cyan-400" data-ml="സ്റ്റേജ് 2 • ക്ലാസ്സ് 4 - 5" data-en="STAGE 2 • CLASSES 4 - 5">STAGE 2 • CLASSES 4 - 5</span>
+              <h3 class="text-lg font-bold text-white">Robo Explorers</h3>
+              <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="സോണാർ സെൻസറുകൾ, സെർവോ മോട്ടോറുകൾ, സ്മാർട്ട് വാട്ടർ ഡിസ്പെൻസർ എന്നിവ നിർമ്മിച്ച് യഥാർത്ഥ മെക്കാനിക്സ് പഠിക്കുന്നു." data-en="Master ultrasonic echolocation sonar, servo motor arms, and smart dispensers while learning physics mechanics.">
+                സോണാർ സെൻസറുകൾ, സെർവോ മോട്ടോറുകൾ, സ്മാർട്ട് വാട്ടർ ഡിസ്പെൻസർ എന്നിവ നിർമ്മിച്ച് യഥാർത്ഥ മെക്കാനിക്സ് പഠിക്കുന്നു.
+              </p>
+            </div>
+            <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-white/[0.06]">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Project 2: Ultrasonic Sonar Radar</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Project 4: Robotic Servo Flapper</span></li>
+            </ul>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="glass-panel rounded-3xl p-6 border border-white/[0.08] space-y-4 relative">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+              <i data-lucide="wifi" class="w-6 h-6"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-amber-400" data-ml="സ്റ്റേജ് 3 • ക്ലാസ്സ് 5 - 6" data-en="STAGE 3 • CLASSES 5 - 6">STAGE 3 • CLASSES 5 - 6</span>
+              <h3 class="text-lg font-bold text-white">Junior IoT Innovators</h3>
+              <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="വൈഫൈ അടിസ്ഥാനമാക്കിയുള്ള IoT സ്മാർട്ട് കാറുകൾ, സംസാരിക്കുന്ന ചെടി സെൻസറുകൾ, C++ കോഡിംഗ് എന്നിവ പരിശീലിക്കുന്നു." data-en="Build WiFi connected IoT smart cars, plant soil monitors, and real Arduino C++ coding like future engineers.">
+                വൈഫൈ അടിസ്ഥാനമാക്കിയുള്ള IoT സ്മാർട്ട് കാറുകൾ, സംസാരിക്കുന്ന ചെടി സെൻസറുകൾ, C++ കോഡിംഗ് എന്നിവ പരിശീലിക്കുന്നു.
+              </p>
+            </div>
+            <ul class="text-xs text-slate-400 space-y-1.5 pt-2 border-t border-white/[0.06]">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Project 10: IoT Autonomous Smart Car</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span>Project 3: Talking Plant Moisture Alert</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 2: PROJECT LAB (പ്രോജക്ട് ലാബ്)                          -->
+    <!-- ============================================================== -->
+    <section id="section-projects" class="content-section hidden space-y-8">
+      
+      <!-- Header & Project Pills Bar -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-6">
+        <div>
+          <div class="flex items-center space-x-2 text-xs font-bold text-indigo-400 mb-2">
+            <span id="projectGrade" class="bg-indigo-950/80 border border-indigo-500/30 px-3 py-1 rounded-full">Grades 2 - 3 (Junior Starter)</span>
+            <span class="bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 px-3 py-1 rounded-full" data-ml="⚡ 100% കിഡ്-സേഫ്" data-en="⚡ 100% Kid-Safe">⚡ 100% Kid-Safe</span>
+          </div>
+          <h2 id="projectTitle" class="text-2xl sm:text-3xl font-black text-white">പ്രോജക്റ്റ് 1: മാജിക് ഓട്ടോ-നൈറ്റ് ലാമ്പ്</h2>
+          <p id="projectDesc" class="text-slate-400 text-sm mt-1 font-ml">മുറിയിൽ ഇരുട്ടാകുമ്പോൾ തനിയെ കത്തുന്ന മാജിക് ലൈറ്റ് ഉണ്ടാക്കാം!</p>
+        </div>
+
+        <!-- Project Pills (All 10 Interactive Projects P1 to P10) -->
+        <div class="flex items-center space-x-1.5 overflow-x-auto py-2 max-w-full">
+          <button data-project="1" class="p-pill px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-md shadow-indigo-500/30 border border-indigo-400 whitespace-nowrap">💡 P1: Night Lamp</button>
+          <button data-project="2" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">📡 P2: Sonar Radar</button>
+          <button data-project="3" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🌱 P3: Plant Alert</button>
+          <button data-project="4" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🦾 P4: Robo Flap</button>
+          <button data-project="5" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🚪 P5: Smart Door</button>
+          <button data-project="6" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🎵 P6: Color Piano</button>
+          <button data-project="7" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🎯 P7: Laser Grid</button>
+          <button data-project="8" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🌧️ P8: Rain Guard</button>
+          <button data-project="9" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🔥 P9: Fire Alert</button>
+          <button data-project="10" class="p-pill px-3 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60 whitespace-nowrap">🚗 P10: IoT Car</button>
+        </div>
+      </div>
+
+      <!-- Inventor's Story Card -->
+      <div class="glass-panel bg-indigo-950/30 border border-indigo-500/25 rounded-2xl p-5 sm:p-6 flex items-start space-x-4 shadow-lg">
+        <div class="w-11 h-11 rounded-2xl bg-indigo-600/30 border border-indigo-400/40 flex items-center justify-center text-indigo-300 flex-shrink-0 mt-0.5 shadow-inner">
+          <i data-lucide="bot" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="text-xs uppercase font-extrabold tracking-wider text-cyan-400 mb-1 flex items-center space-x-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span data-ml="കണ്ടുപിടുത്തത്തിന്റെ കഥ:" data-en="INVENTOR'S STORY:">INVENTOR'S STORY:</span>
+          </div>
+          <p id="projectStory" class="text-sm text-slate-300 leading-relaxed font-ml">
+            നമ്മുടെ കൊച്ചു മിന്നാമിനുങ്ങിനെ പരിചയപ്പെടാം! പകൽ വെളിച്ചത്തിൽ അവൻ ഉറങ്ങും, ഇരുട്ടായാൽ തിളങ്ങും. നമുക്കും ഒരു മാജിക് ലൈറ്റ് ഉണ്ടാക്കിയാലോ!
+          </p>
+        </div>
+      </div>
+
+      <!-- Components Section -->
+      <div>
+        <div class="flex items-center space-x-2 text-xs font-bold text-amber-400 uppercase tracking-wider mb-3">
+          <i data-lucide="box" class="w-4 h-4"></i>
+          <span data-ml="ബോക്സിലുള്ള ഘടകങ്ങൾ" data-en="COMPONENTS FROM YOUR BOX">COMPONENTS FROM YOUR BOX</span>
+        </div>
+        <div id="projectComponentsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Circuit Diagram & Live Physics Simulator Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Interactive Circuit Pinout -->
+        <div class="lg:col-span-7 glass-panel rounded-2xl p-5 sm:p-6 border border-white/[0.08] space-y-4">
+          <div class="flex items-center justify-between border-b border-white/[0.08] pb-3">
+            <div class="flex items-center space-x-2">
+              <i data-lucide="git-fork" class="w-4 h-4 text-cyan-400"></i>
+              <span class="text-sm font-bold text-white" data-ml="സർക്യൂട്ട് കണക്ഷൻ ചിത്രം" data-en="Circuit Connection Diagram">സർക്യൂട്ട് കണക്ഷൻ ചിത്രം</span>
+            </div>
+            <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full font-semibold" data-ml="⚡ പ്ലഗ് & പ്ലേ പിൻഔട്ട്" data-en="⚡ Plug & Play Pinout">⚡ Plug & Play Pinout</span>
+          </div>
+
+          <div id="projectCircuitContent" class="bg-slate-950/90 rounded-xl p-5 border border-white/[0.06] font-code text-xs text-slate-300 space-y-3 shadow-inner">
+            <!-- Dynamically populated by JS for each project! -->
+          </div>
+        </div>
+
+        <!-- Right: Realtime Physics Simulator (Slider) -->
+        <div class="lg:col-span-5 glass-panel rounded-2xl p-5 sm:p-6 border border-white/[0.08] flex flex-col justify-between space-y-5">
+          <div class="flex items-center justify-between border-b border-white/[0.08] pb-3">
+            <div class="flex items-center space-x-2">
+              <i data-lucide="play-circle" class="w-4 h-4 text-indigo-400"></i>
+              <span class="text-sm font-bold text-white" data-ml="ലൈവ് സെൻസർ സിമുലേറ്റർ" data-en="Live Sensor Simulator">ലൈവ് സെൻസർ സിമുലേറ്റർ</span>
+            </div>
+            <span class="text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 px-2.5 py-1 rounded-full font-semibold" data-ml="റിയൽടൈം ഫിസിക്സ്" data-en="REALTIME PHYSICS">REALTIME PHYSICS</span>
+          </div>
+
+          <!-- Virtual Lamp Display -->
+          <div class="bg-slate-950/90 rounded-2xl p-6 flex flex-col items-center justify-center border border-white/[0.06] relative overflow-hidden min-h-[190px] shadow-inner">
+            <div id="virtualBulb" class="w-20 h-20 rounded-full bg-amber-400 flex items-center justify-center text-slate-950 transition-all duration-300 drop-shadow-[0_0_30px_rgba(250,204,21,0.9)]">
+              <i data-lucide="lightbulb" class="w-12 h-12 stroke-[2.5]"></i>
+            </div>
+            <div class="mt-4">
+              <div id="lightStatusBadge" class="px-4 py-2 rounded-full text-xs font-semibold bg-emerald-950/70 border border-emerald-500/50 text-emerald-300 flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Pin D13 LED = HIGH (ON 💡)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="space-y-3 bg-slate-900/70 p-4 rounded-xl border border-white/[0.06]">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-300">
+              <span id="simSliderLeftLabel" class="flex items-center space-x-1">🌑 ഇരുട്ട് (50 Lux)</span>
+              <span id="lightValDisplay" class="text-amber-400 font-code font-bold">220 Lux</span>
+              <span id="simSliderRightLabel" class="flex items-center space-x-1">വെളിച്ചം (950 Lux) ☀️</span>
+            </div>
+            <input type="range" id="lightSlider" min="50" max="950" value="220" 
+                   class="w-full h-2.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+            <div id="simSliderHint" class="text-[11px] text-slate-400 text-center pt-1 font-ml">സ്ലൈഡർ നീക്കി മുറിയിലെ വെളിച്ചം കൂട്ടി കുറച്ചു നോക്കൂ!</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 3: WOKWI LAB (WOKWI പ്രാക്ടിക്കൽ ലാബ്)                  -->
+    <!-- ============================================================== -->
+    <section id="section-wokwi" class="content-section hidden space-y-6">
+      
+      <!-- Header Banner -->
+      <div class="glass-panel rounded-2xl p-6 border border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center space-x-2 text-xs font-bold mb-2">
+            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full">Wokwi Practical Studio</span>
+            <span class="bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 px-3 py-1 rounded-full">Interactive Wiring & Code Upload</span>
+            <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full">Live Serial Monitor</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-black text-white">പ്രാക്ടിക്കൽ സർക്യൂട്ട് & കോഡിംഗ് ലാബ് (Virtual Wokwi Workbench)</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 font-ml">വയറുകൾ വലിച്ചിഴക്കാം (Click to Wire), കോഡ് അപ്‌ലോഡ് ചെയ്യാം (Upload & Flash), ലൈവായി സെൻസറുകൾ ടെസ്റ്റ് ചെയ്യാം!</p>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <button class="bg-amber-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs flex items-center space-x-2 shadow-md">
+            <i data-lucide="layout" class="w-4 h-4"></i>
+            <span data-ml="ഇന്ററാക്ടീവ് വെബ് വർക്ക്‌ബെഞ്ച്" data-en="Interactive Web Workbench">Interactive Web Workbench</span>
+          </button>
+          <a href="https://wokwi.com" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-2.5 rounded-xl text-xs flex items-center space-x-1.5 transition">
+            <span data-ml="പൂർണ്ണ Wokwi സിമുലേറ്റർ" data-en="Full Wokwi AVR Simulator">Full Wokwi AVR Simulator</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Presets & Wire Palette Toolbar -->
+      <div class="glass-panel rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 border border-white/[0.08]">
+        
+        <!-- Preset Dropdown -->
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center space-x-1">
+            <i data-lucide="layers" class="w-4 h-4"></i>
+            <span data-ml="പ്രോജക്റ്റ് സെലക്ഷൻ:" data-en="PROJECT PRESET:">PROJECT PRESET:</span>
+          </span>
+          <select id="projectPresetSelect" class="bg-slate-950 border border-slate-700 text-slate-200 text-xs font-semibold rounded-xl px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+            <option value="1">Project 1: Magic Auto-Night Lamp (LDR + LED)</option>
+            <option value="2">Project 2: Ultrasonic Obstacle Radar (HC-SR04 + Buzzer)</option>
+            <option value="3">Project 3: Talking Plant Moisture Alert</option>
+            <option value="4">Project 4: Robotic Servo Flapper & Arm</option>
+            <option value="5">Project 5: Smart Door Security & Alarm</option>
+            <option value="6">Project 6: Musical Color & Light Piano</option>
+            <option value="7">Project 7: Laser Tripwire Security Grid</option>
+            <option value="8">Project 8: Smart Rain Detector & Auto-Canopy</option>
+            <option value="9">Project 9: Smart Fire & Thermal Safety Alert</option>
+            <option value="10">Project 10: IoT Autonomous Smart Car (Front Page Showcase)</option>
+          </select>
+        </div>
+
+        <!-- Wire Color Selection -->
+        <div class="flex items-center space-x-3">
+          <span class="text-xs text-slate-400 font-medium" data-ml="വയർ നിറം:" data-en="Wire Color:">Wire Color:</span>
+          <div class="flex items-center space-x-2">
+            <button data-color="#ef4444" class="wire-color-dot w-5 h-5 rounded-full bg-rose-500 ring-2 ring-white scale-125 transition"></button>
+            <button data-color="#eab308" class="wire-color-dot w-5 h-5 rounded-full bg-amber-400 transition"></button>
+            <button data-color="#10b981" class="wire-color-dot w-5 h-5 rounded-full bg-emerald-500 transition"></button>
+            <button data-color="#06b6d4" class="wire-color-dot w-5 h-5 rounded-full bg-cyan-400 transition"></button>
+            <button data-color="#a855f7" class="wire-color-dot w-5 h-5 rounded-full bg-purple-500 transition"></button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center space-x-2">
+          <button id="btnAutoWire" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center space-x-1.5 shadow transition">
+            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+            <span data-ml="1-ക്ലിക്ക് ഓട്ടോ-വയർ" data-en="1-Click Auto-Wire">1-Click Auto-Wire</span>
+          </button>
+          <button id="btnClearWires" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-2 rounded-xl text-xs flex items-center space-x-1.5 transition">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            <span data-ml="വയറുകൾ മാറ്റുക" data-en="Clear Wires">Clear Wires</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Main Workbench Grid: Breadboard + Code Studio -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Left: Interactive Circuit Breadboard & Arduino Uno Canvas -->
+        <div class="lg:col-span-6 glass-panel rounded-2xl p-5 border border-white/[0.08] space-y-4 relative">
+          
+          <div class="flex items-center justify-between border-b border-white/[0.08] pb-3">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+              <span class="text-sm font-bold text-white" data-ml="ഇന്ററാക്ടീവ് സർക്യൂട്ട് ബ്രെഡ്ബോർഡ് & ആർഡ്യുയിനോ" data-en="Interactive Circuit Breadboard & Arduino Uno">Interactive Circuit Breadboard & Arduino Uno</span>
+            </div>
+            <span id="wireCountBadge" class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-full font-bold">Wires: 5</span>
+          </div>
+
+          <div class="text-[11px] text-slate-400 bg-slate-900/60 p-2.5 rounded-lg border border-white/[0.06] flex items-center justify-between">
+            <span data-ml-html="💡 <strong>സൂചന:</strong> ആർഡ്യുയിനോയിലോ സെൻസറിലോ ഒരു പിന്നിൽ ക്ലിക്ക് ചെയ്ത് വയറിംഗ് തുടങ്ങാം, അടുത്ത പിന്നിൽ ക്ലിക്ക് ചെയ്ത് ഘടിപ്പിക്കാം! വയർ മാറ്റാൻ വയറിൽ ക്ലിക്ക് ചെയ്യുക." data-en-html="💡 <strong>Tip:</strong> Click any pin on the Arduino or Component to start a jumper wire, then click a destination pin! Click an existing wire to delete it.">💡 <strong>Tip:</strong> Click any pin on the Arduino or Component to start a jumper wire, then click a destination pin! Click an existing wire to delete it.</span>
+            <span id="wireStatusText" class="text-cyan-400 font-semibold pl-2">5 wires connected. Ready to upload!</span>
+          </div>
+
+          <!-- Canvas Workspace with SVG Wire Layer -->
+          <div id="workbenchCanvas" class="relative bg-[#060a15] rounded-2xl p-4 border border-white/[0.06] overflow-hidden min-h-[440px] flex items-center justify-between shadow-inner">
+            
+            <!-- SVG Overlay for Jumper Wires -->
+            <svg id="wireSvg" class="absolute inset-0 w-full h-full pointer-events-auto z-20"></svg>
+
+            <!-- Arduino Uno Graphic (Left side) -->
+            <div class="relative w-48 sm:w-52 h-[380px] pcb-board rounded-2xl p-3 border-2 border-[#087071] shadow-2xl z-10 flex flex-col justify-between">
+              
+              <!-- Board Label -->
+              <div class="text-center pt-2">
+                <div class="text-[13px] font-black text-white tracking-widest uppercase">ARDUINO</div>
+                <div class="text-[10px] font-bold text-slate-200">UNO R3</div>
+                <div class="text-[8px] text-teal-200 font-mono tracking-tighter">KERALA KID-SAFE 5V USB</div>
+              </div>
+
+              <!-- ATmega328P Chip graphic -->
+              <div class="mx-auto my-auto w-24 h-12 bg-slate-950 rounded border border-slate-700 flex items-center justify-center text-[9px] font-mono text-slate-400 shadow-md">
+                ATmega328P
+              </div>
+
+              <!-- Top Pin Header (Digital Pins) -->
+              <div class="bg-slate-950 p-1.5 rounded border border-slate-800 flex justify-between items-center text-[9px] font-mono text-slate-300">
+                <div class="flex items-center space-x-1">
+                  <div id="pin-ard-d13" data-pin="ard-d13" title="Pin D13" class="circuit-pin w-3 h-3 rounded-full bg-slate-300 hover:bg-yellow-400 border border-black"></div>
+                  <div id="pin-ard-d12" data-pin="ard-d12" title="Pin D12" class="circuit-pin w-3 h-3 rounded-full bg-slate-300 hover:bg-yellow-400 border border-black"></div>
+                  <div id="pin-ard-d11" data-pin="ard-d11" title="Pin D11" class="circuit-pin w-3 h-3 rounded-full bg-slate-300 hover:bg-yellow-400 border border-black"></div>
+                </div>
+                <span class="text-[8px] text-slate-400 font-bold">DIGITAL (PWM~)</span>
+                <div class="flex items-center space-x-1">
+                  <div id="pin-ard-gnd2" data-pin="ard-gnd2" title="GND Pin" class="circuit-pin w-3 h-3 rounded-full bg-blue-600 hover:bg-blue-400 border border-black"></div>
+                  <div id="pin-ard-d8" data-pin="ard-d8" title="Pin D8" class="circuit-pin w-3 h-3 rounded-full bg-slate-300 hover:bg-yellow-400 border border-black"></div>
+                </div>
+              </div>
+
+              <!-- Bottom Pin Header (Power & Analog Pins) -->
+              <div class="bg-slate-950 p-1.5 rounded border border-slate-800 flex justify-between items-center text-[9px] font-mono text-slate-300">
+                <div class="flex items-center space-x-1">
+                  <div id="pin-ard-5v" data-pin="ard-5v" title="5V Power" class="circuit-pin w-3 h-3 rounded-full bg-rose-600 hover:bg-rose-400 border border-black"></div>
+                  <div id="pin-ard-gnd" data-pin="ard-gnd" title="GND" class="circuit-pin w-3 h-3 rounded-full bg-blue-600 hover:bg-blue-400 border border-black"></div>
+                </div>
+                <span class="text-[8px] text-slate-400 font-bold">POWER | ANALOG</span>
+                <div class="flex items-center space-x-1">
+                  <div id="pin-ard-a0" data-pin="ard-a0" title="Analog A0" class="circuit-pin w-3 h-3 rounded-full bg-emerald-500 hover:bg-emerald-300 border border-black"></div>
+                  <div id="pin-ard-a1" data-pin="ard-a1" title="Analog A1" class="circuit-pin w-3 h-3 rounded-full bg-slate-400 border border-black"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Components Column (Right side) -->
+            <div class="flex flex-col space-y-4 z-10 w-44">
+              
+              <!-- HC-SR04 Sonar -->
+              <div class="bg-[#1b4369] p-2.5 rounded-xl border border-blue-400/40 text-center shadow-lg">
+                <div class="text-[9px] font-bold text-white">HC-SR04 SONAR</div>
+                <div class="flex justify-center space-x-2 my-1">
+                  <div class="w-6 h-6 rounded-full bg-slate-300 border-2 border-slate-600 flex items-center justify-center text-[8px] text-slate-900 font-bold">T</div>
+                  <div class="w-6 h-6 rounded-full bg-slate-300 border-2 border-slate-600 flex items-center justify-center text-[8px] text-slate-900 font-bold">R</div>
+                </div>
+                <div class="flex justify-around pt-1">
+                  <div id="pin-sonar-vcc" data-pin="sonar-vcc" title="Sonar VCC" class="circuit-pin w-2.5 h-2.5 rounded-full bg-rose-500"></div>
+                  <div id="pin-sonar-trig" data-pin="sonar-trig" title="Sonar Trig" class="circuit-pin w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
+                  <div id="pin-sonar-echo" data-pin="sonar-echo" title="Sonar Echo" class="circuit-pin w-2.5 h-2.5 rounded-full bg-purple-400"></div>
+                  <div id="pin-sonar-gnd" data-pin="sonar-gnd" title="Sonar GND" class="circuit-pin w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                </div>
+              </div>
+
+              <!-- LDR Light Sensor -->
+              <div class="bg-[#0f4028] p-2.5 rounded-xl border border-emerald-400/40 text-center shadow-lg">
+                <div class="text-[9px] font-bold text-emerald-200">LDR LIGHT SENSOR</div>
+                <div class="w-6 h-6 mx-auto my-1 rounded-full bg-amber-500/40 border border-amber-400 flex items-center justify-center shadow-inner">
+                  <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-300"></i>
+                </div>
+                <div class="flex justify-around pt-1">
+                  <div id="pin-ldr-vcc" data-pin="ldr-vcc" title="LDR VCC" class="circuit-pin w-2.5 h-2.5 rounded-full bg-rose-500"></div>
+                  <div id="pin-ldr-out" data-pin="ldr-out" title="LDR Output" class="circuit-pin w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                  <div id="pin-ldr-gnd" data-pin="ldr-gnd" title="LDR GND" class="circuit-pin w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                </div>
+              </div>
+
+              <!-- LED & Piezo -->
+              <div class="grid grid-cols-2 gap-2">
+                <div class="bg-slate-900 p-2 rounded-lg border border-slate-700 text-center shadow">
+                  <div class="text-[8px] font-bold text-amber-300">LED [OFF]</div>
+                  <div class="flex justify-center space-x-2 mt-2">
+                    <div id="pin-led-anode" data-pin="led-anode" title="LED Anode (+)" class="circuit-pin w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                    <div id="pin-led-cathode" data-pin="led-cathode" title="LED Cathode (-)" class="circuit-pin w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                  </div>
+                </div>
+                <div class="bg-slate-900 p-2 rounded-lg border border-slate-700 text-center shadow">
+                  <div class="text-[8px] font-bold text-slate-300">PIEZO [OFF]</div>
+                  <div class="flex justify-center space-x-2 mt-2">
+                    <div id="pin-piezo-pos" data-pin="piezo-pos" title="Piezo (+)" class="circuit-pin w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+                    <div id="pin-piezo-neg" data-pin="piezo-neg" title="Piezo (-)" class="circuit-pin w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right: Arduino C++ Code Studio & Live Serial Monitor -->
+        <div class="lg:col-span-6 space-y-5">
+          
+          <!-- Code Studio Card (Clean Monaco/VS Code Theme) -->
+          <div class="glass-panel rounded-2xl p-5 border border-white/[0.08] space-y-3">
+            <div class="flex items-center justify-between border-b border-white/[0.08] pb-3">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="code" class="w-4 h-4 text-cyan-400"></i>
+                <span class="text-sm font-bold text-white" data-ml="ആർഡ്യുയിനോ C++ കോഡ് സ്റ്റുഡിയോ" data-en="Arduino C++ Code Studio">Arduino C++ Code Studio</span>
+              </div>
+              <button id="btnResetCode" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded-lg border border-white/[0.08] font-semibold transition" data-ml="റീസെറ്റ്" data-en="Reset">Reset</button>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] font-code text-slate-400 px-1">
+              <span>sketch.ino</span>
+              <span>ATmega328P @ 16MHz</span>
+            </div>
+
+            <textarea id="codeEditorArea" rows="9" 
+                      class="w-full bg-slate-950/95 rounded-xl p-3.5 border border-white/[0.08] font-code text-xs text-emerald-400 leading-relaxed outline-none focus:ring-2 focus:ring-indigo-500/50 resize-y shadow-inner"></textarea>
+
+            <div class="flex items-center space-x-3 pt-1">
+              <button id="btnUploadRun" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/20 transition">
+                <i data-lucide="zap" class="w-4 h-4 fill-white"></i>
+                <span data-ml="അപ്‌ലോഡ് & റൺ" data-en="Upload & Run">Upload & Run</span>
+              </button>
+              <button id="btnStopRun" class="px-5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 rounded-xl text-xs flex items-center space-x-1.5 transition">
+                <i data-lucide="square" class="w-3.5 h-3.5"></i>
+                <span data-ml="നിർത്തുക" data-en="Stop Run">Stop Run</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Serial Monitor Card -->
+          <div class="glass-panel rounded-2xl p-4 border border-white/[0.08] space-y-2">
+            <div class="flex items-center justify-between border-b border-white/[0.08] pb-2">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+                <span class="text-xs font-bold text-white" data-ml="ലൈവ് സീരിയൽ മോണിറ്റർ" data-en="Live Serial Monitor">Live Serial Monitor</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-[10px] text-slate-400 font-code">9600 baud</span>
+                <button id="btnClearSerial" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-0.5 rounded transition" data-ml="ക്ലിയർ" data-en="Clear">Clear</button>
+              </div>
+            </div>
+
+            <textarea id="serialLogBox" rows="5" readonly 
+                      class="w-full bg-slate-950/95 rounded-xl p-3 border border-white/[0.06] font-code text-[11px] text-cyan-300 leading-relaxed outline-none resize-none shadow-inner">[system] serial monitor ready, click 'upload & run' to start streaming output...
+[System] Auto-wired 5 connections for 'Magic Auto-Night Lamp'.</textarea>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 4: MALAYALAM VIDEOS (മലയാളം വീഡിയോകൾ)                 -->
+    <!-- ============================================================== -->
+    <section id="section-videos" class="content-section hidden space-y-8">
+      
+      <!-- Badges & Section Header -->
+      <div class="space-y-3">
+        <div class="flex flex-wrap gap-2 text-xs font-bold">
+          <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1 rounded-full" data-ml="🎥 മലയാളം വിഷ്വൽ ട്യൂട്ടോറിയലുകൾ" data-en="🎥 Malayalam Visual Tutorials">🎥 മലയാളം വിഷ്വൽ ട്യൂട്ടോറിയലുകൾ</span>
+          <span class="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-full" data-ml="10 ഹാൻഡ്സ്-ഓൺ വീഡിയോ മൊഡ്യൂളുകൾ" data-en="10 Hands-on Video Modules">10 Hands-on Video Modules</span>
+          <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full" data-ml="മലയാളം ഓഡിയോ & സബ്‌ടൈറ്റിലുകൾ" data-en="Bilingual Audio & Subtitles">Bilingual Audio & Subtitles</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white" data-ml="മലയാളം സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് പ്രൊജക്റ്റ് വീഡിയോ ക്ലാസുകൾ" data-en="Step-by-Step Project Video Classes">മലയാളം സ്റ്റെപ്പ്-ബൈ-സ്റ്റെപ്പ് പ്രൊജക്റ്റ് വീഡിയോ ക്ലാസുകൾ</h2>
+        <p class="text-slate-400 text-sm font-ml" data-ml="ചിത്രസഹിതം കണ്ടു പഠിക്കാം, സംശയങ്ങൾ ഇല്ലാതെ സ്വന്തമായി ഓരോ പ്രൊജക്റ്റും ഉണ്ടാക്കാം!" data-en="Watch animated visual classes and build each micro-IoT project with ease!">ചിത്രസഹിതം കണ്ടു പഠിക്കാം, സംശയങ്ങൾ ഇല്ലാതെ സ്വന്തമായി ഓരോ പ്രൊജക്റ്റും ഉണ്ടാക്കാം!</p>
+      </div>
+
+      <!-- Main Video Player Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Video Canvas Player -->
+        <div class="lg:col-span-8 glass-panel rounded-3xl p-4 sm:p-5 border border-white/[0.08] space-y-4">
+          
+          <!-- Screen Area Mockup -->
+          <div class="relative bg-slate-950 rounded-2xl border border-white/[0.08] aspect-video flex flex-col items-center justify-center overflow-hidden group shadow-2xl">
+            
+            <!-- Animated Sound Wave Simulator in BG -->
+            <div class="absolute inset-0 opacity-15 flex items-center justify-around px-8 pointer-events-none">
+              <div class="w-2 h-16 bg-cyan-400 rounded-full animate-bounce"></div>
+              <div class="w-2 h-28 bg-indigo-500 rounded-full animate-pulse"></div>
+              <div class="w-2 h-20 bg-amber-400 rounded-full animate-bounce"></div>
+              <div class="w-2 h-36 bg-cyan-400 rounded-full animate-pulse"></div>
+              <div class="w-2 h-12 bg-indigo-400 rounded-full animate-bounce"></div>
+            </div>
+
+            <!-- Big Center Play Button -->
+            <button id="videoCenterPlay" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-rose-600/90 hover:bg-rose-500 text-white flex items-center justify-center shadow-2xl shadow-rose-600/40 transform hover:scale-110 transition z-10">
+              <i data-lucide="play" class="w-8 h-8 fill-white ml-1"></i>
+            </button>
+
+            <!-- Video Overlay Info -->
+            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-xs font-semibold text-white">
+              <span data-ml="ചാപ്റ്റർ 1: നൈറ്റ് ലാമ്പ് സർക്യൂട്ട് കണക്ഷൻ" data-en="Chapter 1: Auto Night Lamp Wiring">Chapter 1: നൈറ്റ് ലാമ്പ് സർക്യൂട്ട് കണക്ഷൻ</span>
+            </div>
+
+          </div>
+
+          <!-- Video Scrubber Progress Bar -->
+          <div class="space-y-2">
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden cursor-pointer">
+              <div id="videoProgressBar" class="bg-rose-500 h-full w-[25%] rounded-full transition-all duration-300"></div>
+            </div>
+            <div class="flex items-center justify-between text-xs text-slate-400 font-code">
+              <span id="videoTimeDisplay">00:45 / 03:00</span>
+              <span class="text-slate-500">1080p Full HD</span>
+            </div>
+          </div>
+
+          <!-- Video Controls Toolbar -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-white/[0.08]">
+            <div class="flex items-center space-x-3">
+              <button id="videoPlayBtn" class="w-9 h-9 rounded-xl bg-rose-600 hover:bg-rose-500 text-white flex items-center justify-center transition">
+                <i id="playIconSvg" data-lucide="play" class="w-4 h-4 fill-white"></i>
+              </button>
+              <button id="audioVoiceToggle" class="text-xs font-bold text-cyan-300 bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-xl transition border border-white/[0.08]" data-ml="മലയാളം വോയ്സ്: ON" data-en="Malayalam Voice: ON">
+                മലയാളം വോയ്സ്: ON
+              </button>
+            </div>
+
+            <!-- Chapter Stepper Buttons -->
+            <div class="flex items-center space-x-1.5">
+              <button class="video-step-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow" data-ml="തുടങ്ങാം" data-en="Start">Start</button>
+              <button class="video-step-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-ml="വയറിംഗ്" data-en="Wiring">Wiring</button>
+              <button class="video-step-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-ml="കോഡ്" data-en="Code">Code</button>
+              <button class="video-step-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700" data-ml="ടെസ്റ്റ്" data-en="Test">Test</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Video Chapters Sidebar -->
+        <div class="lg:col-span-4 space-y-5">
+          
+          <!-- Chapters List Card -->
+          <div class="glass-panel rounded-2xl p-5 border border-white/[0.08] space-y-3">
+            <div class="flex items-center justify-between border-b border-white/[0.08] pb-3">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="list" class="w-4 h-4 text-cyan-400"></i>
+                <span class="text-sm font-bold text-white" data-ml="വീഡിയോ ചാപ്റ്ററുകൾ" data-en="Video Chapters">വീഡിയോ ചാപ്റ്ററുകൾ</span>
+              </div>
+              <span class="text-xs text-slate-400 font-semibold" data-ml="5 ഘട്ടങ്ങൾ" data-en="5 Steps">5 Steps</span>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-indigo-950/40 border border-indigo-500/30 rounded-xl flex items-center justify-between text-indigo-200 font-semibold cursor-pointer">
+                <span data-ml="1. ആമുഖവും ഘടകങ്ങളും" data-en="1. Introduction & Components">1. ആമുഖവും ഘടകങ്ങളും</span>
+                <span class="font-code text-[11px] text-indigo-400">00:45</span>
+              </div>
+              <div class="p-3 bg-slate-900/60 border border-white/[0.06] rounded-xl flex items-center justify-between text-slate-300 font-medium hover:bg-slate-800 transition cursor-pointer">
+                <span data-ml="2. സർക്യൂട്ട് കണക്ഷൻ ലൈവ്" data-en="2. Breadboard Wiring Live">2. സർക്യൂട്ട് കണക്ഷൻ ലൈവ്</span>
+                <span class="font-code text-[11px] text-slate-500">01:15</span>
+              </div>
+              <div class="p-3 bg-slate-900/60 border border-white/[0.06] rounded-xl flex items-center justify-between text-slate-300 font-medium hover:bg-slate-800 transition cursor-pointer">
+                <span data-ml="3. C++ കോഡ് വിശദീകരണം" data-en="3. Arduino C++ Logic">3. C++ കോഡ് വിശദീകരണം</span>
+                <span class="font-code text-[11px] text-slate-500">02:00</span>
+              </div>
+              <div class="p-3 bg-slate-900/60 border border-white/[0.06] rounded-xl flex items-center justify-between text-slate-300 font-medium hover:bg-slate-800 transition cursor-pointer">
+                <span data-ml="4. ലൈവ് ടെസ്റ്റിംഗ് & റിസൾട്ട്" data-en="4. Live Sensor Testing">4. ലൈവ് ടെസ്റ്റിംഗ് & റിസൾട്ട്</span>
+                <span class="font-code text-[11px] text-slate-500">02:30</span>
+              </div>
+              <div class="p-3 bg-slate-900/60 border border-white/[0.06] rounded-xl flex items-center justify-between text-slate-300 font-medium hover:bg-slate-800 transition cursor-pointer">
+                <span data-ml="5. അടുത്ത പ്രൊജക്റ്റ് ചലഞ്ച്" data-en="5. Next Project Challenge">5. അടുത്ത പ്രൊജക്റ്റ് ചലഞ്ച്</span>
+                <span class="font-code text-[11px] text-slate-500">03:00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Jump Card -->
+          <div class="glass-panel rounded-2xl p-5 border border-white/[0.08] space-y-3 bg-gradient-to-br from-indigo-950/40 to-slate-900">
+            <div class="text-sm font-bold text-white" data-ml="ഇനി തനിയെ ചെയ്തു നോക്കാം!" data-en="Ready to Build Hands-On?">ഇനി തനിയെ ചെയ്തു നോക്കാം!</div>
+            <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="വീഡിയോ കണ്ടു മനസ്സിലായെങ്കിൽ ഇപ്പോൾ തന്നെ ഇന്ററാക്ടീവ് പ്രൊജക്റ്റ്‌ ലാബിലോ Wokwi സിമുലേറ്ററിലോ ഈ സർക്യൂട്ട് നിർമ്മിക്കാം." data-en="Understood the concepts? Jump straight into our interactive Project Lab or Wokwi simulator to build this live!">
+              വീഡിയോ കണ്ടു മനസ്സിലായെങ്കിൽ ഇപ്പോൾ തന്നെ ഇന്ററാക്ടീവ് പ്രൊജക്റ്റ്‌ ലാബിലോ Wokwi സിമുലേറ്ററിലോ ഈ സർക്യൂട്ട് നിർമ്മിക്കാം.
+            </p>
+            <div class="flex items-center space-x-2 pt-2">
+              <button onclick="switchTab('projects')" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-1.5 transition">
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                <span data-ml="ഓപ്പൺ ലാബ്" data-en="Open Lab">ഓപ്പൺ ലാബ്</span>
+              </button>
+              <button onclick="switchTab('wokwi')" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-1.5 transition">
+                <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                <span data-ml="Wokwi ലാബ്" data-en="Wokwi Lab">Wokwi ലാബ്</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 5: KITS & PLANS (കിറ്റ് & പ്ലാൻ)                         -->
+    <!-- ============================================================== -->
+    <section id="section-kits" class="content-section hidden space-y-12">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-2">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-wider" data-ml="എല്ലാം ഒരൊറ്റ ബോക്സിൽ" data-en="EVERYTHING INCLUDED IN ONE BOX">EVERYTHING INCLUDED IN ONE BOX</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white" data-ml="കേരള കിഡ്-സേഫ് IoT സ്റ്റാർട്ടർ കിറ്റ്" data-en="The Kerala Kid-Safe IoT Starter Kit">The Kerala Kid-Safe IoT Starter Kit</h2>
+        <p class="text-sm sm:text-base text-slate-300 font-ml" data-ml="ക്ലാസ്സ് 2 മുതൽ 6 വരെയുള്ള കുട്ടികൾക്കായി പ്രത്യേകം തയ്യാറാക്കിയത്. 100% പ്ലഗ് & പ്ലേ, സോൾഡറിംഗ് ആവശ്യമില്ല." data-en="Engineered specifically for Class 2 to 6 students. 100% plug & play with zero soldering or high voltage.">Engineered specifically for Class 2 to 6 students. 100% plug & play with zero soldering or high voltage.</p>
+      </div>
+
+      <!-- Main Two Column Grid: Hardware Box vs Pricing Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: What's Inside Your Starter Box -->
+        <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-6">
+          <div class="flex items-center space-x-3 border-b border-white/[0.08] pb-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+              <i data-lucide="package" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-white" data-ml="സ്റ്റാർട്ടർ ബോക്സിലുള്ള ഘടകങ്ങൾ:" data-en="What's Inside Your Starter Box:">What's Inside Your Starter Box:</h3>
+          </div>
+
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">1</span>
+              <span class="text-slate-200" data-ml="ആർഡ്യുയിനോ നാനോ / യുനോ ബ്രെയിൻ ബോർഡ് + ഹൈ സ്പീഡ് USB കേബിൾ" data-en="Arduino Nano / Uno Brain Board + High Speed USB Cable">Arduino Nano / Uno Brain Board + High Speed USB Cable</span>
+            </div>
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">2</span>
+              <span class="text-slate-200" data-ml="HC-SR04 അൾട്രാസോണിക് ഡിസ്റ്റൻസ് സെൻസർ (റഡാർ പ്രൊജക്റ്റുകൾക്ക്)" data-en="HC-SR04 Ultrasonic Distance Sensor (For touchless robot projects)">HC-SR04 Ultrasonic Distance Sensor <span class="text-slate-400 text-xs">(For touchless robot projects)</span></span>
+            </div>
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">3</span>
+              <span class="text-slate-200" data-ml="LDR ഓപ്റ്റിക്കൽ ലൈറ്റ് സെൻസർ (ഓട്ടോ-നൈറ്റ് ലാമ്പിന്)" data-en="LDR Optical Light Sensor (For auto night lamp)">LDR Optical Light Sensor <span class="text-slate-400 text-xs">(For auto night lamp)</span></span>
+            </div>
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">4</span>
+              <span class="text-slate-200" data-ml="സോയിൽ മോയിസ്ചർ പ്രോബ് (സംസാരിക്കുന്ന ചെടി സെൻസറിന്)" data-en="Soil Moisture Probe (For talking plant gadget)">Soil Moisture Probe <span class="text-slate-400 text-xs">(For talking plant gadget)</span></span>
+            </div>
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">5</span>
+              <span class="text-slate-200" data-ml="SG90 മൈക്രോ സെർവോ മോട്ടോർ (റോബോട്ടിക് കൈകൾക്ക്)" data-en="SG90 Micro Servo Motor (For robotic flaps & hands)">SG90 Micro Servo Motor <span class="text-slate-400 text-xs">(For robotic flaps & hands)</span></span>
+            </div>
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">6</span>
+              <span class="text-slate-200" data-ml="പീസോ അലാറം ബസർ + 5 മൾട്ടി-കളർ LED ലൈറ്റുകൾ" data-en="Piezo Alarm Buzzer + 5 Multi-color LEDs">Piezo Alarm Buzzer + 5 Multi-color LEDs</span>
+            </div>
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">7</span>
+              <span class="text-slate-200" data-ml="സോൾഡറിംഗ് ആവശ്യമില്ലാത്ത മിനി ബ്രെഡ്ബോർഡ് + 20 ഡ്യൂപോണ്ട് കേബിളുകൾ" data-en="Solderless Mini Breadboard + 20 Pin DuPont Cables">Solderless Mini Breadboard + 20 Pin DuPont Cables</span>
+            </div>
+            <div class="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-900/60 border border-white/[0.06]">
+              <span class="w-7 h-7 rounded-lg bg-indigo-600/30 text-indigo-300 font-bold flex items-center justify-center text-xs flex-shrink-0">8</span>
+              <span class="text-slate-200 font-semibold text-amber-300" data-ml="മലയാളം ചിത്രകഥാ ഗൈഡ്ബുക്ക് (കളർ പ്രിന്റഡ്)" data-en="Malayalam Illustrated Comic-Guidebook (Color Printed)">Malayalam Illustrated Comic-Guidebook (Color Printed)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Pricing Plans -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Monthly Pocket Money Plan -->
+          <div class="glass-panel rounded-3xl p-6 border-2 border-indigo-500/40 relative space-y-4 shadow-xl">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider" data-ml="പ്രതിമാസ പോക്കറ്റ് മണി പ്ലാൻ" data-en="MONTHLY POCKET-MONEY PLAN">MONTHLY POCKET-MONEY PLAN</span>
+              <span class="bg-indigo-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full shadow" data-ml="ഏറ്റവും ജനപ്രിയം" data-en="MOST POPULAR">MOST POPULAR</span>
+            </div>
+
+            <div class="flex items-baseline space-x-2">
+              <span class="text-4xl font-black text-white">₹39</span>
+              <span class="text-sm text-slate-400 font-medium" data-ml="/ മാസം" data-en="/ month">/ month</span>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="ഓരോ ആഴ്ചയും പുതിയ പ്രൊജക്റ്റ് മൊഡ്യൂളുകൾ, വീക്കെൻഡ് ലൈവ് മലയാളം ഡൗട്ട് സെഷനുകൾ, കോഡിംഗ് മത്സരങ്ങൾ." data-en="Continuous weekly new project modules, live weekend Malayalam doubt sessions, and coding competitions.">
+              ഓരോ ആഴ്ചയും പുതിയ പ്രൊജക്റ്റ് മൊഡ്യൂളുകൾ, വീക്കെൻഡ് ലൈവ് മലയാളം ഡൗട്ട് സെഷനുകൾ, കോഡിംഗ് മത്സരങ്ങൾ.
+            </p>
+
+            <button data-plan="Monthly Pocket-Money Plan (₹39/month)" class="btn-open-order w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30">
+              <span data-ml="₹39 പ്രതിമാസ പ്ലാൻ തുടങ്ങാം" data-en="Start ₹39 Monthly Plan">Start ₹39 Monthly Plan</span>
+            </button>
+          </div>
+
+          <!-- Annual Combo Plan -->
+          <div class="glass-panel rounded-3xl p-6 border border-amber-500/30 relative space-y-4 bg-gradient-to-b from-amber-950/20 to-slate-900 shadow-xl">
+            <div class="text-xs font-bold text-amber-400 uppercase tracking-wider" data-ml="സൂപ്പർ സേവർ വാർഷിക കോമ്പോ" data-en="SUPER SAVER ANNUAL COMBO">SUPER SAVER ANNUAL COMBO</div>
+
+            <div class="flex items-baseline space-x-2">
+              <span class="text-4xl font-black text-amber-400">₹699</span>
+              <span class="text-sm text-slate-400 font-medium" data-ml="/ ഒരു വർഷം" data-en="/ full year">/ full year</span>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="ഹാർഡ്‌വെയർ കിറ്റ് (കേരളത്തിൽ സൗജന്യ ഡെലിവറി) + 12 മാസത്തെ VIP പ്ലാറ്റ്‌ഫോം ആക്സസ് + 1-on-1 മെന്റർ സെഷൻ ഉൾപ്പെടുന്നു." data-en="Includes Hardware Kit (Delivered Free in Kerala) + 12 Months VIP Platform Access + 1-on-1 Mentor Session.">
+              ഹാർഡ്‌വെയർ കിറ്റ് (കേരളത്തിൽ സൗജന്യ ഡെലിവറി) + 12 മാസത്തെ VIP പ്ലാറ്റ്‌ഫോം ആക്സസ് + 1-on-1 മെന്റർ സെഷൻ ഉൾപ്പെടുന്നു.
+            </p>
+
+            <button data-plan="Super Saver Annual Combo (₹699)" class="btn-open-order btn-shimmer w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl text-sm transition shadow-xl shadow-amber-500/20">
+              <span data-ml="കോമ്പോ ബോക്സ് ഓർഡർ ചെയ്യുക (₹699)" data-en="Order Combo Box (₹699)">Order Combo Box (₹699)</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 6: LIVE CLASSES (ലൈവ് ബാച്ചുകൾ)                         -->
+    <!-- ============================================================== -->
+    <section id="section-workshops" class="content-section hidden space-y-12">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-2">
+        <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider" data-ml="വീക്കെൻഡ് ലൈവ് വർക്ക്‌ഷോപ്പുകൾ • ട്യൂട്ടർമാർ: അൽഫീന എ, സൽമ എ ആർ" data-en="WEEKEND LIVE WORKSHOPS • TUTORS: ALFINA A & SALMA A R">WEEKEND LIVE WORKSHOPS • TUTORS: ALFINA A & SALMA A R</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white" data-ml="ലൈവ് മലയാളം മെന്റർഷിപ്പ് ബാച്ചുകൾ" data-en="Live Mentorship Workshops">ലൈവ് മലയാളം മെന്റർഷിപ്പ് ബാച്ചുകൾ</h2>
+        <p class="text-sm sm:text-base text-slate-300 font-ml" data-ml="കുട്ടികൾക്ക് സംശയങ്ങൾ നേരിട്ട് ചോദിക്കാം! പ്രൊജക്ടുകൾ ചെയ്തിട്ട് ലൈവായി പരീക്ഷിക്കാനുള്ള വീക്കെൻഡ് ലൈവ് ക്ലാസുകൾ നയിക്കുന്നത് അൽഫീന എ, സൽമ എ ആർ എന്നിവരാണ്." data-en="Direct live doubt clearance! Interactive weekend hands-on workshops mentored by Tutors Alfina A and Salma A R.">കുട്ടികൾക്ക് സംശയങ്ങൾ നേരിട്ട് ചോദിക്കാം! പ്രൊജക്ടുകൾ ചെയ്തിട്ട് ലൈവായി പരീക്ഷിക്കാനുള്ള വീക്കെൻഡ് ലൈവ് ക്ലാസുകൾ നയിക്കുന്നത് അൽഫീന എ, സൽമ എ ആർ എന്നിവരാണ്.</p>
+      </div>
+
+      <!-- Workshop Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Batch 1 -->
+        <div class="glass-panel rounded-3xl p-6 border border-white/[0.08] flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full" data-ml="ശനിയാഴ്ച ബാച്ച്" data-en="Saturday Batch">Saturday Batch</span>
+              <span class="text-[11px] text-slate-400 font-code">10:00 AM - 11:30 AM</span>
+            </div>
+            <div class="text-[11px] font-bold text-amber-300 flex items-center space-x-1">
+              <i data-lucide="user-check" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span data-ml="ട്യൂട്ടർ: അൽഫീന എ" data-en="Tutor: Alfina A">Tutor: Alfina A</span>
+            </div>
+            <h3 class="text-lg font-bold text-white" data-ml="ക്ലാസ്സ് 2 - 3 (Junior Starters)" data-en="Class 2 - 3 (Junior Starters)">ക്ലാസ്സ് 2 - 3 (Junior Starters)</h3>
+            <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="മാജിക് ലൈറ്റുകളുടെയും കളർ ലൈറ്റുകളുടെയും ലളിതമായ പരീക്ഷണങ്ങൾ. കളികളിലൂടെ സർക്യൂട്ട് ബേസിക്സ് മനസ്സിലാക്കാം." data-en="Simple hands-on experiments with magic night lights and color synthesizers. Learn fundamentals through playful challenges.">
+              മാജിക് ലൈറ്റുകളുടെയും കളർ ലൈറ്റുകളുടെയും ലളിതമായ പരീക്ഷണങ്ങൾ. കളികളിലൂടെ സർക്യൂട്ട് ബേസിക്സ് മനസ്സിലാക്കാം.
+            </p>
+          </div>
+          <button data-plan="Saturday Batch - Class 2-3 (₹39/Mo)" class="btn-open-order w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl text-xs transition">
+            <span data-ml="ബാച്ചിൽ ജോയിൻ ചെയ്യുക (₹39/Mo)" data-en="Join Batch (₹39/Mo)">ബാച്ചിൽ ജോയിൻ ചെയ്യുക (₹39/Mo)</span>
+          </button>
+        </div>
+
+        <!-- Batch 2 (Filling Fast) -->
+        <div class="glass-panel rounded-3xl p-6 border-2 border-indigo-500/50 flex flex-col justify-between space-y-6 relative shadow-lg shadow-indigo-500/10">
+          <div class="absolute -top-3 right-6 bg-rose-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow" data-ml="വേഗത്തിൽ നിറയുന്നു" data-en="FILLING FAST">
+            FILLING FAST
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold px-3 py-1 rounded-full" data-ml="ഞായറാഴ്ച രാവിലത്തെ ബാച്ച്" data-en="Sunday Morning">Sunday Morning</span>
+              <span class="text-[11px] text-slate-400 font-code">10:00 AM - 11:30 AM</span>
+            </div>
+            <div class="text-[11px] font-bold text-amber-300 flex items-center space-x-1">
+              <i data-lucide="user-check" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span data-ml="ട്യൂട്ടർ: സൽമ എ ആർ" data-en="Tutor: Salma A R">Tutor: Salma A R</span>
+            </div>
+            <h3 class="text-lg font-bold text-white" data-ml="ക്ലാസ്സ് 4 - 5 (Robo Explorers)" data-en="Class 4 - 5 (Robo Explorers)">ക്ലാസ്സ് 4 - 5 (Robo Explorers)</h3>
+            <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="സ്മാർട്ട് വാട്ടർ ഡിസ്പെൻസർ & അൾട്രാസോണിക് റഡാർ നിർമ്മാണം. സെർവോ മോട്ടോർ കൺട്രോൾ പരിശീലനം." data-en="Hands-on ultrasonic sonar radar, smart dispenser, and robotic servo motor orientation mastery.">
+              സ്മാർട്ട് വാട്ടർ ഡിസ്പെൻസർ & അൾട്രാസോണിക് റഡാർ നിർമ്മാണം. സെർവോ മോട്ടോർ കൺട്രോൾ പരിശീലനം.
+            </p>
+          </div>
+          <button data-plan="Sunday Morning - Class 4-5 (₹39/Mo)" class="btn-open-order w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl text-xs transition">
+            <span data-ml="ബാച്ചിൽ ജോയിൻ ചെയ്യുക (₹39/Mo)" data-en="Join Batch (₹39/Mo)">ബാച്ചിൽ ജോയിൻ ചെയ്യുക (₹39/Mo)</span>
+          </button>
+        </div>
+
+        <!-- Batch 3 -->
+        <div class="glass-panel rounded-3xl p-6 border border-white/[0.08] flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full" data-ml="ഞായറാഴ്ച വൈകുന്നേരത്തെ ബാച്ച്" data-en="Sunday Evening">Sunday Evening</span>
+              <span class="text-[11px] text-slate-400 font-code">4:00 PM - 5:30 PM</span>
+            </div>
+            <div class="text-[11px] font-bold text-amber-300 flex items-center space-x-1">
+              <i data-lucide="users" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span data-ml="ട്യൂട്ടർമാർ: അൽഫീന എ, സൽമ എ ആർ" data-en="Tutors: Alfina A & Salma A R">Tutors: Alfina A & Salma A R</span>
+            </div>
+            <h3 class="text-lg font-bold text-white" data-ml="ക്ലാസ്സ് 5 - 6 (Junior IoT Innovators)" data-en="Class 5 - 6 (Junior IoT Innovators)">ക്ലാസ്സ് 5 - 6 (Junior IoT Innovators)</h3>
+            <p class="text-xs text-slate-300 leading-relaxed font-ml" data-ml="സംസാരിക്കുന്ന ചെടി സെൻസറും ലേസർ സെക്യൂരിറ്റി അലാറവും. ആർഡ്യുയിനോ C++ കോഡിംഗിലേക്ക് ആദ്യ ചുവട്." data-en="Talking houseplant monitor, laser perimeter grid, and IoT Smart Car with beginner Arduino C++ programming.">
+              സംസാരിക്കുന്ന ചെടി സെൻസറും ലേസർ സെക്യൂരിറ്റി അലാറവും. ആർഡ്യുയിനോ C++ കോഡിംഗിലേക്ക് ആദ്യ ചുവട്.
+            </p>
+          </div>
+          <button data-plan="Sunday Evening - Class 5-6 (₹39/Mo)" class="btn-open-order w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl text-xs transition">
+            <span data-ml="ബാച്ചിൽ ജോയിൻ ചെയ്യുക (₹39/Mo)" data-en="Join Batch (₹39/Mo)">ബാച്ചിൽ ജോയിൻ ചെയ്യുക (₹39/Mo)</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- COURSE COMPLETION CERTIFICATE & DOWNLOAD STUDIO                -->
+      <!-- ============================================================== -->
+      <div class="pt-8 border-t border-white/[0.08] space-y-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+          <span class="inline-flex items-center space-x-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span data-ml="ഔദ്യോഗിക അംഗീകാരം & സർട്ടിഫിക്കറ്റ്" data-en="OFFICIAL CREDENTIAL & RECOGNITION">OFFICIAL CREDENTIAL & RECOGNITION</span>
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white" data-ml="കോഴ്സ് പൂർത്തിയാക്കിയാൽ ലഭിക്കുന്ന ഒഫീഷ്യൽ സർട്ടിഫിക്കറ്റ്" data-en="Official Certificate of Completion & Innovation">കോഴ്സ് പൂർത്തിയാക്കിയാൽ ലഭിക്കുന്ന ഒഫീഷ്യൽ സർട്ടിഫിക്കറ്റ്</h2>
+          <p class="text-xs sm:text-sm text-slate-300 font-ml" data-ml="ലൈവ് ബാച്ചുകളിലും പ്രൊജക്റ്റുകളിലും പങ്കെടുത്ത് 10 പ്രൊജക്റ്റുകൾ വിജയകരമായി പൂർത്തിയാക്കുന്ന എല്ലാ കൊച്ചു ശാസ്ത്രജ്ഞർക്കും വെരിഫൈഡ് സർട്ടിഫിക്കറ്റ് ലഭിക്കുന്നു. താഴെ പേര് നൽകി സർട്ടിഫിക്കറ്റ് ലൈവായി ഡൗൺലോഡ് ചെയ്യാം!" data-en="Every junior innovator who completes the 10 hands-on STEM projects and live workshops receives an official verified credential. Customize and download in real-time below!">
+            ലൈവ് ബാച്ചുകളിലും പ്രൊജക്റ്റുകളിലും പങ്കെടുത്ത് 10 പ്രൊജക്റ്റുകൾ വിജയകരമായി പൂർത്തിയാക്കുന്ന എല്ലാ കൊച്ചു ശാസ്ത്രജ്ഞർക്കും വെരിഫൈഡ് സർട്ടിഫിക്കറ്റ് ലഭിക്കുന്നു. താഴെ പേര് നൽകി സർട്ടിഫിക്കറ്റ് ലൈവായി ഡൗൺലോഡ് ചെയ്യാം!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left: Live Certificate Preview Canvas (Printable & Downloadable) -->
+          <div class="lg:col-span-7">
+            <div id="certificatePrintableArea" class="cert-frame rounded-2xl p-6 sm:p-8 text-center relative overflow-hidden space-y-5 border-4 border-amber-500/40">
+              
+              <!-- Subtle Watermark Background -->
+              <div class="absolute inset-0 opacity-[0.04] pointer-events-none flex items-center justify-center">
+                <i data-lucide="award" class="w-96 h-96 text-white"></i>
+              </div>
+
+              <!-- Top Header: Logo + Seal -->
+              <div class="flex items-center justify-between border-b border-amber-500/20 pb-4 relative z-10">
+                <div class="flex items-center space-x-2 text-left">
+                  <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white">
+                    <i data-lucide="zap" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-black text-white tracking-wider">HELLO2-IOT ACADEMY</div>
+                    <div class="text-[9px] text-cyan-400 font-semibold tracking-tight">KERALA MICRO-STEM INNOVATION HUB</div>
+                  </div>
+                </div>
+
+                <div class="cert-gold-badge px-3 py-1 rounded-full text-[10px] font-black text-slate-950 flex items-center space-x-1 uppercase tracking-wider">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                  <span data-ml="വെരിഫൈഡ് അംഗീകാരം" data-en="VERIFIED CREDENTIAL">VERIFIED CREDENTIAL</span>
+                </div>
+              </div>
+
+              <!-- Certificate Titles -->
+              <div class="space-y-1 relative z-10">
+                <div class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-amber-400">CERTIFICATE OF INNOVATION & EXCELLENCE</div>
+                <div class="text-sm font-bold text-slate-300 font-ml" data-ml="കേരള ജൂനിയർ റോബോട്ടിക്സ് & IoT ഇന്നൊവേറ്റർ പുരസ്കാരം" data-en="Kerala Junior Robotics & IoT Innovator Award">കേരള ജൂനിയർ റോബോട്ടിക്സ് & IoT ഇന്നൊവേറ്റർ പുരസ്കാരം</div>
+              </div>
+
+              <!-- Recipient -->
+              <div class="py-2 space-y-1 relative z-10">
+                <div class="text-[11px] text-slate-400 uppercase tracking-widest font-semibold" data-ml="ഈ സർട്ടിഫിക്കറ്റ് അഭിമാനത്തോടെ സമർപ്പിക്കുന്നു" data-en="THIS IS PROUDLY PRESENTED TO">THIS IS PROUDLY PRESENTED TO</div>
+                <div id="certStudentName" class="font-serif-cert text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-wide underline decoration-amber-500/40 decoration-1 underline-offset-8">
+                  Ayesha Fathima
+                </div>
+              </div>
+
+              <!-- Course Statement -->
+              <p class="text-xs text-slate-300 max-w-lg mx-auto leading-relaxed relative z-10 font-ml" data-ml-html="ആർഡ്യുയിനോ അൾട്രാസോണിക് റഡാർ, മാജിക് നൈറ്റ് ലാമ്പ്, <strong>IoT സ്മാർട്ട് കാർ</strong> എന്നിവ ഉൾപ്പെടെയുള്ള <strong>10 ഹാൻഡ്സ്-ഓൺ പ്രൊജക്റ്റുകളും C++ കോഡിംഗും</strong> വിജയകരമായി പൂർത്തിയാക്കിയതിന്." data-en-html="for successfully completing the <strong>10 Hands-on STEM & Robotics Projects</strong>, including Ultrasonic Sonar Radar, Magic Night Lamp, and the <strong>IoT Autonomous Smart Car</strong> with real Arduino C++ coding.">
+                for successfully completing the <strong>10 Hands-on STEM & Robotics Projects</strong>, including Ultrasonic Sonar Radar, Magic Night Lamp, and the <strong>IoT Autonomous Smart Car</strong> with real Arduino C++ coding.
+              </p>
+
+              <!-- Track Badge -->
+              <div class="relative z-10">
+                <span id="certTrackBadge" class="inline-block bg-indigo-950/80 border border-indigo-500/40 text-indigo-300 px-4 py-1.5 rounded-full text-[11px] font-extrabold">
+                  Class 5 - 6 (Junior IoT Innovators Track)
+                </span>
+              </div>
+
+              <!-- Footer: Signatures & Validation - TUTORS: ALFINA A & SALMA A R -->
+              <div class="pt-4 border-t border-amber-500/20 flex flex-wrap items-end justify-between text-left gap-4 relative z-10">
+                
+                <!-- Left Signature: Alfina A -->
+                <div class="space-y-1">
+                  <div class="font-serif-cert italic text-base sm:text-lg text-cyan-300 font-bold">Alfina A</div>
+                  <div class="h-0.5 w-28 bg-gradient-to-r from-cyan-400 to-indigo-500"></div>
+                  <div class="text-[11px] font-extrabold text-slate-200">Alfina A</div>
+                  <div class="text-[9px] text-cyan-400 font-semibold" data-ml="ലീഡ് റോബോട്ടിക്സ് & IoT ട്യൂട്ടർ" data-en="Lead Robotics & IoT Tutor">Lead Robotics & IoT Tutor</div>
+                </div>
+
+                <!-- Center: Security QR & ID -->
+                <div class="text-center">
+                  <div id="certIdDisplay" class="text-[10px] font-code font-bold text-amber-400">ID: KL-IOT-2026-8891</div>
+                  <div id="certDateDisplay" class="text-[9px] text-slate-400" data-ml="നൽകിയ തീയതി: ഒക്ടോബർ 2026" data-en="Issued: October 2026">Issued: October 2026</div>
+                  <div class="text-[8px] text-emerald-400 font-bold mt-0.5 flex items-center justify-center space-x-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span data-ml="സർട്ടിഫൈഡ് & വെരിഫൈഡ്" data-en="Certified & Verified">● Certified & Verified</span>
+                  </div>
+                </div>
+
+                <!-- Right Signature: Salma A R -->
+                <div class="text-right space-y-1">
+                  <div class="font-serif-cert italic text-base sm:text-lg text-cyan-300 font-bold">Salma A. R.</div>
+                  <div class="h-0.5 w-28 bg-gradient-to-r from-indigo-500 to-cyan-400 ml-auto"></div>
+                  <div class="text-[11px] font-extrabold text-slate-200">Salma A R</div>
+                  <div class="text-[9px] text-cyan-400 font-semibold" data-ml="കരിക്കുലം & ഇന്നൊവേഷൻ ട്യൂട്ടർ" data-en="Curriculum & Innovation Tutor">Curriculum & Innovation Tutor</div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Certificate Generator & Download Actions -->
+          <div class="lg:col-span-5 space-y-5">
+            
+            <!-- Controls Card -->
+            <div class="glass-panel rounded-3xl p-6 border border-white/[0.08] space-y-4">
+              <div class="flex items-center space-x-2 border-b border-white/[0.08] pb-3">
+                <i data-lucide="sliders" class="w-4 h-4 text-cyan-400"></i>
+                <h3 class="text-sm font-bold text-white" data-ml="സർട്ടിഫിക്കറ്റ് തയ്യാറാക്കാം (Customizer)" data-en="Certificate Studio Customizer">സർട്ടിഫിക്കറ്റ് തയ്യാറാക്കാം (Customizer)</h3>
+              </div>
+
+              <div class="space-y-3.5 text-xs">
+                <div>
+                  <label class="block text-slate-300 font-semibold mb-1" data-ml="വിദ്യാർത്ഥിയുടെ പേര് (Student Full Name):" data-en="Student Full Name:">വിദ്യാർത്ഥിയുടെ പേര് (Student Full Name):</label>
+                  <input type="text" id="inputCertName" value="Ayesha Fathima" placeholder="Enter Student Name" 
+                         data-ml-placeholder="വിദ്യാർത്ഥിയുടെ പേര് നൽകുക" data-en-placeholder="Enter Student Name"
+                         class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-amber-300 font-bold outline-none focus:border-indigo-500">
+                </div>
+
+                <div>
+                  <label class="block text-slate-300 font-semibold mb-1" data-ml="പഠിച്ച ബാച്ച് / ലെവൽ (Course Track):" data-en="Course Level / Track:">പഠിച്ച ബാച്ച് / ലെവൽ (Course Track):</label>
+                  <select id="selectCertTrack" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500">
+                    <option value="Class 2 - 3 (Junior Starters Track)">ക്ലാസ്സ് 2 - 3 (Junior Starters Track)</option>
+                    <option value="Class 4 - 5 (Robo Explorers Track)">ക്ലാസ്സ് 4 - 5 (Robo Explorers Track)</option>
+                    <option value="Class 5 - 6 (Junior IoT Innovators Track)" selected>ക്ലാസ്സ് 5 - 6 (Junior IoT Innovators Track)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-slate-300 font-semibold mb-1" data-ml="പൂർത്തിയാക്കിയ തീയതി (Completion Date):" data-en="Completion Date:">പൂർത്തിയാക്കിയ തീയതി (Completion Date):</label>
+                  <input type="text" id="inputCertDate" value="October 2026" 
+                         class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500">
+                </div>
+              </div>
+
+              <!-- Action Download Buttons -->
+              <div class="pt-2 space-y-2.5">
+                <button id="btnDownloadCert" class="btn-shimmer w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black py-3 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-orange-500/25 transition">
+                  <i data-lucide="download" class="w-4 h-4"></i>
+                  <span data-ml="സർട്ടിഫിക്കറ്റ് ഡൗൺലോഡ് ചെയ്യുക (Download PNG)" data-en="Download Certificate (PNG Image)">സർട്ടിഫിക്കറ്റ് ഡൗൺലോഡ് ചെയ്യുക (Download PNG)</span>
+                </button>
+
+                <button id="btnPrintCert" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-2 shadow transition">
+                  <i data-lucide="printer" class="w-4 h-4"></i>
+                  <span data-ml="പ്രിന്റ് / സേവ് PDF (Print or Save PDF)" data-en="Print / Save as PDF">പ്രിന്റ് / സേവ് PDF (Print or Save PDF)</span>
+                </button>
+
+                <button id="btnShareCert" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-2 shadow transition">
+                  <i data-lucide="share-2" class="w-4 h-4"></i>
+                  <span data-ml="വാട്സ്ആപ്പിൽ ഷെയർ ചെയ്യുക (Share on WhatsApp)" data-en="Share Certificate on WhatsApp">വാട്സ്ആപ്പിൽ ഷെയർ ചെയ്യുക (Share on WhatsApp)</span>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Verification / Credential Check Box -->
+            <div class="glass-panel rounded-2xl p-4 border border-white/[0.08] space-y-2.5 text-xs">
+              <div class="flex items-center space-x-2 text-slate-300 font-bold">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                <span data-ml="സർട്ടിഫിക്കറ്റ് വെരിഫിക്കേഷൻ (Verify Certificate ID)" data-en="Verify Certificate Credential ID">സർട്ടിഫിക്കറ്റ് വെരിഫിക്കേഷൻ (Verify Certificate ID)</span>
+              </div>
+              <div class="flex space-x-2">
+                <input type="text" id="verifyCertInput" placeholder="Enter ID e.g. KL-IOT-2026-8891" 
+                       data-ml-placeholder="സർട്ടിഫിക്കറ്റ് ഐഡി നൽകുക (ഉദാ: KL-IOT-2026-8891)" data-en-placeholder="Enter ID e.g. KL-IOT-2026-8891"
+                       class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-code outline-none text-xs">
+                <button id="btnVerifyCert" class="bg-slate-800 hover:bg-slate-700 text-cyan-400 font-bold px-3 py-2 rounded-xl text-xs transition">
+                  <span data-ml="പരിശോധിക്കുക" data-en="Verify">Verify</span>
+                </button>
+              </div>
+              <div id="verifyResult" class="text-[11px] text-emerald-400 font-semibold hidden" data-ml="✓ കേരള Hello2-IoT ഹബ് നൽകിയ അംഗീകൃത വെരിഫൈഡ് സർട്ടിഫിക്കറ്റ്." data-en="✓ Verified Authentic Credential issued by Kerala Hello2-IoT Hub.">
+                ✓ Verified Authentic Credential issued by Kerala Hello2-IoT Hub.
+              </div>
+            </div>
+
+            <!-- Trust Points -->
+            <div class="grid grid-cols-2 gap-3 text-[11px] text-slate-400 font-medium">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="award" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
+                <span data-ml="സ്കൂൾ സയൻസ് ഫെയറുകളിൽ വാലിഡ്" data-en="School Science Fair Valid">School Science Fair Valid</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <i data-lucide="globe" class="w-4 h-4 text-cyan-400 flex-shrink-0"></i>
+                <span data-ml="ലൈഫ് ടൈം ഡിജിറ്റൽ വെരിഫിക്കേഷൻ" data-en="Lifetime Digital ID">Lifetime Digital ID</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SECTION 7: FAQ & TRUST                                         -->
+    <!-- ============================================================== -->
+    <section id="section-faq" class="content-section hidden max-w-3xl mx-auto space-y-6">
+      
+      <div class="text-center space-y-2 mb-8">
+        <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider" data-ml="ചോദ്യങ്ങളും ഉത്തരങ്ങളും" data-en="QUESTIONS & ANSWERS">QUESTIONS & ANSWERS</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white" data-ml="പതിവായി ചോദിക്കുന്ന ചോദ്യങ്ങൾ (FAQ)" data-en="Frequently Asked Questions (FAQ)">പതിവായി ചോദിക്കുന്ന ചോദ്യങ്ങൾ (FAQ)</h2>
+      </div>
+
+      <div class="space-y-3 text-sm">
+        <details class="glass-panel rounded-2xl p-4 border border-white/[0.08] group" open>
+          <summary class="font-bold text-white cursor-pointer list-none flex items-center justify-between">
+            <span data-ml="ക്ലാസ് 2 മുതൽ 6 വരെയുള്ള കുട്ടികൾക്ക് ഇത് സുരക്ഷിതമാണോ?" data-en="Is this 100% safe for students in Classes 2 to 6?">ക്ലാസ് 2 മുതൽ 6 വരെയുള്ള കുട്ടികൾക്ക് ഇത് സുരക്ഷിതമാണോ?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed border-t border-white/[0.08] pt-3 font-ml" data-ml="അതെ, തീർച്ചയായും! ഈ കിറ്റ് 100% കിഡ്-സേഫ് ആണ്. ഇതിൽ സോൾഡറിംഗ് ചെയ്യേണ്ടതില്ല (Zero Soldering). സാധാരണ മൊബൈൽ ഫോൺ ചാർജർ അല്ലെങ്കിൽ പവർബാങ്ക് വഴി പ്രവർത്തിക്കുന്ന 5V USB പവറിലാണ് ഇത് പ്രവർത്തിക്കുന്നത്. ഷോക്ക് അടിക്കാനുള്ള യാതൊരു സാധ്യതയുമില്ല." data-en="Yes, absolutely! This kit is 100% kid-safe. It requires zero soldering. It runs strictly on 5V USB power via phone chargers or power banks, meaning zero risk of high voltage shocks.">
+            അതെ, തീർച്ചയായും! ഈ കിറ്റ് 100% കിഡ്-സേഫ് ആണ്. ഇതിൽ സോൾഡറിംഗ് ചെയ്യേണ്ടതില്ല (Zero Soldering). സാധാരണ മൊബൈൽ ഫോൺ ചാർജർ അല്ലെങ്കിൽ പവർബാങ്ക് വഴി പ്രവർത്തിക്കുന്ന 5V USB പവറിലാണ് ഇത് പ്രവർത്തിക്കുന്നത്. ഷോക്ക് അടിക്കാനുള്ള യാതൊരു സാധ്യതയുമില്ല.
+          </p>
+        </details>
+
+        <details class="glass-panel rounded-2xl p-4 border border-white/[0.08] group">
+          <summary class="font-bold text-white cursor-pointer list-none flex items-center justify-between">
+            <span data-ml="കേരളത്തിലെ എല്ലാ ജില്ലകളിലും ഹോം ഡെലിവറി ലഭ്യമാണോ?" data-en="Is express home delivery available across all Kerala districts?">കേരളത്തിലെ എല്ലാ ജില്ലകളിലും ഹോം ഡെലിവറി ലഭ്യമാണോ?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed border-t border-white/[0.08] pt-3 font-ml" data-ml="അതെ, തിരുവനന്തപുരം മുതൽ കാസർഗോഡ് വരെയുള്ള കേരളത്തിലെ എല്ലാ 14 ജില്ലകളിലേക്കും സൗജന്യമായി (Free Delivery) നിങ്ങളുടെ വീട്ടിലേക്ക് കിറ്റ് എത്തിച്ചു നൽകുന്നു." data-en="Yes, we provide 100% free doorstep delivery across all 14 districts in Kerala, from Thiruvananthapuram to Kasaragod.">
+            അതെ, തിരുവനന്തപുരം മുതൽ കാസർഗോഡ് വരെയുള്ള കേരളത്തിലെ എല്ലാ 14 ജില്ലകളിലേക്കും സൗജന്യമായി (Free Delivery) നിങ്ങളുടെ വീട്ടിലേക്ക് കിറ്റ് എത്തിച്ചു നൽകുന്നു.
+          </p>
+        </details>
+
+        <details class="glass-panel rounded-2xl p-4 border border-white/[0.08] group">
+          <summary class="font-bold text-white cursor-pointer list-none flex items-center justify-between">
+            <span data-ml="ഇംഗ്ലീഷ് അറിയാത്ത കുട്ടികൾക്ക് ചെയ്യാൻ സാധിക്കുമോ?" data-en="Can children who primarily speak Malayalam follow the course?">ഇംഗ്ലീഷ് അറിയാത്ത കുട്ടികൾക്ക് ചെയ്യാൻ സാധിക്കുമോ?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed border-t border-white/[0.08] pt-3 font-ml" data-ml="തീർച്ചയായും! എല്ലാ വീഡിയോകളും, പുസ്തകങ്ങളും, ലൈവ് ക്ലാസുകളും ലളിതമായ മലയാളത്തിലാണ്. സാങ്കേതിക പദങ്ങൾ മാത്രമാണ് ഇംഗ്ലീഷിൽ പരിചയപ്പെടുത്തുന്നത്." data-en="Absolutely! All video tutorials, guidebook comic illustrations, and live workshops are conducted in crystal clear, simple Malayalam.">
+            തീർച്ചയായും! എല്ലാ വീഡിയോകളും, പുസ്തകങ്ങളും, ലൈവ് ക്ലാസുകളും ലളിതമായ മലയാളത്തിലാണ്. സാങ്കേതിക പദങ്ങൾ മാത്രമാണ് ഇംഗ്ലീഷിൽ പരിചയപ്പെടുത്തുന്നത്.
+          </p>
+        </details>
+
+        <details class="glass-panel rounded-2xl p-4 border border-white/[0.08] group">
+          <summary class="font-bold text-white cursor-pointer list-none flex items-center justify-between">
+            <span data-ml="കമ്പ്യൂട്ടർ അല്ലെങ്കിൽ ലാപ്ടോപ്പ് നിർബന്ധമാണോ?" data-en="Is a personal laptop or computer mandatory?">കമ്പ്യൂട്ടർ അല്ലെങ്കിൽ ലാപ്ടോപ്പ് നിർബന്ധമാണോ?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed border-t border-white/[0.08] pt-3 font-ml" data-ml="ലാപ്‌ടോപ്പ് നിർബന്ധമില്ല. സ്മാർട്ട്‌ഫോൺ വഴി കുട്ടികൾക്ക് വീഡിയോകൾ കാണാനും Wokwi വെബ് ലാബ് ഉപയോഗിക്കാനും സാധിക്കും. ഹാർഡ്‌വെയർ കിറ്റ് ഫോൺ ചാർജറിൽ ഘടിപ്പിച്ചാൽ തന്നെ പ്രൊജക്റ്റുകൾ പ്രവർത്തിക്കും." data-en="A laptop is not required. Students can watch classes on any smartphone or tablet and simulate with our interactive web tools. Hardware runs directly from power banks or chargers.">
+            ലാപ്‌ടോപ്പ് നിർബന്ധമില്ല. സ്മാർട്ട്‌ഫോൺ വഴി കുട്ടികൾക്ക് വീഡിയോകൾ കാണാനും Wokwi വെബ് ലാബ് ഉപയോഗിക്കാനും സാധിക്കും. ഹാർഡ്‌വെയർ കിറ്റ് ഫോൺ ചാർജറിൽ ഘടിപ്പിച്ചാൽ തന്നെ പ്രൊജക്റ്റുകൾ പ്രവർത്തിക്കും.
+          </p>
+        </details>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- CHECKOUT / ORDER MODAL (KERALA 14 DISTRICTS)                    -->
+  <!-- ============================================================== -->
+  <div id="orderModal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4">
+    <div class="glass-panel bg-[#080d1e] border border-cyan-500/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      
+      <button id="modalCloseBtn" class="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div>
+        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider" data-ml="കേരള ക്വിക്ക് ചെക്ക്ഔട്ട്" data-en="KERALA QUICK CHECKOUT">KERALA QUICK CHECKOUT</span>
+        <h3 class="text-xl sm:text-2xl font-black text-white mt-1" data-ml="ഓർഡർ കൺഫർമേഷൻ" data-en="Order Confirmation">ഓർഡർ കൺഫർമേഷൻ</h3>
+        <p class="text-xs text-slate-400 mt-1 font-ml" data-ml="കേരളത്തിലെ 14 ജില്ലകളിലേക്കും സൗജന്യ ഹോം ഡെലിവറി & WhatsApp സപ്പോർട്ട്" data-en="Free Express Home Delivery Across All 14 Districts of Kerala & WhatsApp Support">കേരളത്തിലെ 14 ജില്ലകളിലേക്കും സൗജന്യ ഹോം ഡെലിവറി & WhatsApp സപ്പോർട്ട്</p>
+      </div>
+
+      <form id="orderForm" class="space-y-4 text-xs sm:text-sm">
+        
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1" data-ml="തിരഞ്ഞെടുത്ത പ്ലാൻ / കിറ്റ്:" data-en="Selected Plan / Kit:">തിരഞ്ഞെടുത്ത പ്ലാൻ / കിറ്റ്:</label>
+          <input type="text" id="selectedPlanInput" readonly 
+                 class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-amber-300 font-bold outline-none cursor-default">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1" data-ml="മാതാപിതാക്കളുടെ പേര്:" data-en="Parent's Full Name:">മാതാപിതാക്കളുടെ പേര്:</label>
+            <input type="text" id="inputParentName" required placeholder="Parent's Full Name" 
+                   data-ml-placeholder="മാതാപിതാക്കളുടെ പൂർണ്ണ പേര്" data-en-placeholder="Parent's Full Name"
+                   class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1" data-ml="വാട്സ്ആപ്പ് നമ്പർ:" data-en="WhatsApp Number:">വാട്സ്ആപ്പ് നമ്പർ:</label>
+            <input type="tel" id="inputPhone" required placeholder="+91 98765 43210" 
+                   class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1" data-ml="കുട്ടിയുടെ ക്ലാസ്സ്:" data-en="Student's Class:">കുട്ടിയുടെ ക്ലാസ്സ്:</label>
+            <select class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500">
+              <option>ക്ലാസ്സ് 2 - 3 (Junior Starters)</option>
+              <option>ക്ലാസ്സ് 4 - 5 (Robo Explorers)</option>
+              <option>ക്ലാസ്സ് 5 - 6 (Junior IoT Innovators)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1" data-ml="കേരളത്തിലെ ജില്ല:" data-en="District in Kerala:">കേരളത്തിലെ ജില്ല:</label>
+            <select id="selectDistrict" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500">
+              <option value="തിരുവനന്തപുരം">തിരുവനന്തപുരം (Thiruvananthapuram)</option>
+              <option value="കൊല്ലം">കൊല്ലം (Kollam)</option>
+              <option value="പത്തനംതിട്ട">പത്തനംതിട്ട (Pathanamthitta)</option>
+              <option value="ആലപ്പുഴ">ആലപ്പുഴ (Alappuzha)</option>
+              <option value="കോട്ടയം">കോട്ടയം (Kottayam)</option>
+              <option value="ഇടുക്കി">ഇടുക്കി (Idukki)</option>
+              <option value="എറണാകുളം" selected>എറണാകുളം (Ernakulam)</option>
+              <option value="തൃശ്ശൂർ">തൃശ്ശൂർ (Thrissur)</option>
+              <option value="പാലക്കാട്">പാലക്കാട് (Palakkad)</option>
+              <option value="മലപ്പുറം">മലപ്പുറം (Malappuram)</option>
+              <option value="കോഴിക്കോട്">കോഴിക്കോട് (Kozhikode)</option>
+              <option value="വയനാട്">വയനാട് (Wayanad)</option>
+              <option value="കണ്ണൂർ">കണ്ണൂർ (Kannur)</option>
+              <option value="കാസർഗോഡ്">കാസർഗോഡ് (Kasaragod)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1" data-ml="ഡെലിവറി വിലാസം & പിൻകോഡ്:" data-en="Delivery Address & PIN Code:">ഡെലിവറി വിലാസം & പിൻകോഡ്:</label>
+          <textarea rows="2" required placeholder="House Name, Landmark, Post Office, PIN Code" 
+                    data-ml-placeholder="വീട്ടുപേര്, ലാൻഡ്മാർക്ക്, പോസ്റ്റ് ഓഫീസ്, പിൻകോഡ്" data-en-placeholder="House Name, Landmark, Post Office, PIN Code"
+                    class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <div class="p-3 bg-slate-900/80 rounded-xl border border-white/[0.08] text-xs text-slate-300 space-y-1">
+          <div class="font-bold text-amber-400" data-ml="പേയ്മെന്റ് ഓപ്ഷൻ:" data-en="Payment Options:">പേയ്മെന്റ് ഓപ്ഷൻ:</div>
+          <div data-ml="✓ ക്യാഷ് ഓൺ ഡെലിവറി (Cash on Delivery) ലഭ്യമാണ്" data-en="✓ Cash on Delivery (COD) Available">✓ ക്യാഷ് ഓൺ ഡെലിവറി (Cash on Delivery) ലഭ്യമാണ്</div>
+          <div data-ml="✓ Google Pay / PhonePe / UPI വഴി അടയ്ക്കാം" data-en="✓ Google Pay / PhonePe / UPI Accepted">✓ Google Pay / PhonePe / UPI വഴി അടയ്ക്കാം</div>
+        </div>
+
+        <button type="submit" class="btn-shimmer w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black py-3.5 rounded-xl text-sm shadow-xl shadow-orange-500/25 transition">
+          <span data-ml="ഓർഡർ ഉറപ്പിക്കുക (Confirm Order)" data-en="Confirm Order (Free Delivery)">ഓർഡർ ഉറപ്പിക്കുക (Confirm Order)</span>
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING QUICK WHATSAPP BUTTON -->
+  <a href="https://wa.me/919847012345?text=Hello%20Hello2-IoT,%20I%20am%20interested%20in%20the%20Kid-Safe%20Starter%20Kit" 
+     target="_blank" 
+     class="whatsapp-float fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:px-4 sm:py-3 rounded-full flex items-center space-x-2 shadow-2xl font-bold text-xs sm:text-sm">
+    <i data-lucide="message-circle" class="w-5 h-5 fill-white"></i>
+    <span class="hidden sm:inline" data-ml="WhatsApp മെന്റർ" data-en="WhatsApp Mentor">WhatsApp Mentor</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/[0.08] bg-[#020409] mt-24 py-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+          <i data-lucide="zap" class="w-4 h-4"></i>
+        </div>
+        <div>
+          <div class="font-bold text-slate-200 text-sm">Hello2-IoT Platform</div>
+          <div data-ml="കേരളത്തിലെ #1 ഹാൻഡ്സ്-ഓൺ STEM & റോബോട്ടിക്സ് ലേണിംഗ് ഹബ് (ക്ലാസ്സ് 2-6). Made with ❤️ in Kerala." data-en="Kerala's #1 Hands-on STEM & Robotics Hub for Kids (Classes 2-6). Made with ❤️ in Kerala.">Kerala's #1 Hands-on STEM & Robotics Hub for Kids (Classes 2-6). Made with ❤️ in Kerala.</div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="mailto:support@hello2iot.com" class="flex items-center space-x-1.5 hover:text-white transition">
+          <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+          <span>support@hello2iot.com</span>
+        </a>
+        <a href="https://wa.me/919847012345" target="_blank" class="flex items-center space-x-1.5 hover:text-emerald-400 transition">
+          <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i>
+          <span>WhatsApp: +91 98470 12345</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="assets/js/app.js"></script>
+
+</body>
+</html>
