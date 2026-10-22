@@ -10,6 +10,12 @@ const TRANSLATIONS = {
     nav_kits: "കിറ്റ് & പ്ലാൻ",
     nav_workshops: "ലൈവ് ബാച്ചുകൾ",
     nav_faq: "FAQ",
+    nav_games: "Games Zone",
+    nav_assessment: "Assessment",
+    nav_portal: "Portal Login",
+    nav_games: "ഗെയിംസ് സോൺ",
+    nav_assessment: "അസസ്സ്മെന്റ്",
+    nav_portal: "പോർട്ടൽ ലോഗിൻ",
     nav_buy_kit: "കിറ്റ് വാങ്ങുക (₹399)",
     top_promo: "✨ സ്പെഷ്യൽ ഓഫർ: കേരളത്തിലെ എല്ലാ 14 ജില്ലകളിലേക്കും സൗജന്യ ഹോം ഡെലിവറി! സ്റ്റാർട്ടർ കിറ്റ് വെറും ₹399 മാത്രം!",
     hero_badge: "കേരളത്തിലെ കൊച്ചു ശാസ്ത്രജ്ഞർക്കായി ഒരുക്കിയ ആദ്യ പ്ലാറ്റ്‌ഫോം",
@@ -56,6 +62,12 @@ const TRANSLATIONS = {
     nav_kits: "Kits & Plans",
     nav_workshops: "Live Batches",
     nav_faq: "FAQ",
+    nav_games: "Games Zone",
+    nav_assessment: "Assessment",
+    nav_portal: "Portal Login",
+    nav_games: "ഗെയിംസ് സോൺ",
+    nav_assessment: "അസസ്സ്മെന്റ്",
+    nav_portal: "പോർട്ടൽ ലോഗിൻ",
     nav_buy_kit: "Buy Starter Kit (₹399)",
     top_promo: "✨ Special Offer: Free Home Delivery Across All 14 Districts of Kerala! Starter Kit just ₹399!",
     hero_badge: "Kerala's #1 STEM & Robotics Innovation Platform for Kids",
@@ -916,6 +928,7 @@ function switchTab(tabName) {
   });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (window.lucide) lucide.createIcons();
 }
 
 // Circuit Connection Renderer for Project Lab
@@ -1756,6 +1769,340 @@ function downloadCertificateCanvas() {
   link.download = `Hello2-IoT_Certificate_${name.replace(/\s+/g, '_')}.png`;
   link.href = canvas.toDataURL('image/png');
   link.click();
+}
+
+
+// =========================================================================
+// KIDS IOT GAMES ZONE & SCOREBOARD LOGIC
+// =========================================================================
+
+let gameState = {
+  activeGame: 1,
+  userScore: 1450,
+  stars: 14,
+  wireQuestMissionIdx: 0,
+  wireQuestTimer: 30,
+  wireQuestInterval: null,
+  wireQuestPoints: 450,
+  sensorCrisisIdx: 0,
+  sensorScore: 520,
+  carGameScore: 480,
+  currentUser: {
+    role: 'student', // 'student' or 'teacher'
+    name: 'Ayesha Fathima',
+    id: 'KL-STU-2026-88',
+    grade: 'Class 5',
+    district: 'Ernakulam',
+    tutors: 'Alfina A & Salma A R'
+  }
+};
+
+const WIRE_QUEST_MISSIONS = [
+  { text_en: "LDR Light Sensor -> Connect to Analog A0 Pin", text_ml: "LDR ലൈറ്റ് സെൻസർ -> അനലോഗ് A0 പിന്നിലേക്ക് ഘടിപ്പിക്കൂ", correctPin: "A0", desc: "Analog Light Reading" },
+  { text_en: "Piezo Buzzer Positive (+) -> Connect to Digital Pin D8", text_ml: "പീസോ ബസർ (+) -> ഡിജിറ്റൽ പിൻ D8 ലേക്ക് ഘടിപ്പിക്കൂ", correctPin: "D11", desc: "Digital Siren Alarm" },
+  { text_en: "Robotic SG90 Servo Signal -> Connect to Pin D11 PWM", text_ml: "SG90 സെർവോ സിഗ്നൽ -> പിൻ D11 PWM ലേക്ക് ഘടിപ്പിക്കൂ", correctPin: "D11", desc: "PWM 180° Angle Control" },
+  { text_en: "Hardware Power VCC -> Connect to Arduino 5V Pin", text_ml: "ഹാർഡ്‌വെയർ പവർ VCC -> ആർഡ്യുയിനോ 5V പിന്നിലേക്ക് ഘടിപ്പിക്കൂ", correctPin: "5V", desc: "Safe 5V DC Supply" },
+  { text_en: "Common Ground -> Connect to Arduino GND Pin", text_ml: "കോമൺ ഗ്രൗണ്ട് -> ആർഡ്യുയിനോ GND പിന്നിലേക്ക് ഘടിപ്പിക്കൂ", correctPin: "GND", desc: "0V Ground Return" }
+];
+
+const SENSOR_CRISES = [
+  {
+    icon: "🌧️",
+    title_en: "Sudden Monsoon Cloudburst! Clothes outside will get soaked!",
+    title_ml: "കേരളത്തിൽ പെട്ടെന്ന് കനത്ത മഴ പെയ്യുന്നു! തുണികൾ നനയാതിരിക്കാൻ ഓട്ടോ-റൂഫ് അടയ്ക്കണം!",
+    subtitle_en: "Which sensor detects raindrops to drive the SG90 motorized canopy?",
+    subtitle_ml: "ഏത് സെൻസറാണ് മഴത്തുള്ളികൾ തിരിച്ചറിഞ്ഞ് റൂഫ് അടയ്ക്കേണ്ടത്?",
+    correctSensor: "rain"
+  },
+  {
+    icon: "🚪",
+    title_en: "Intruder Alert! Study room door is pushed open while you are away!",
+    title_ml: "പഠനമുറിയുടെ വാതിൽ ആരോ തുറക്കാൻ ശ്രമിക്കുന്നു! അപായ അലാറം മുഴക്കണം!",
+    subtitle_en: "Which sensor measures the distance gap to trigger the intruder siren?",
+    subtitle_ml: "വാതിലിന്റെ വിടവ് തിരിച്ചറിഞ്ഞ് സൈറൺ മുഴക്കേണ്ട സെൻസർ ഏതാണ്?",
+    correctSensor: "sonar"
+  },
+  {
+    icon: "💡",
+    title_en: "Night has fallen! The bedroom goes completely dark!",
+    title_ml: "സന്ധ്യയായി, മുറിയിൽ ഇരുട്ട് വ്യാപിക്കുന്നു! മാജിക് ലാമ്പ് കത്തണം!",
+    subtitle_en: "Which sensor reads light drop (Lux) to turn on the Pin D13 LED automatically?",
+    subtitle_ml: "ഇരുട്ട് തിരിച്ചറിഞ്ഞ് മാജിക് ലാമ്പ് ഓട്ടോമാറ്റിക്കായി കത്തിക്കേണ്ട സെൻസർ ഏതാണ്?",
+    correctSensor: "ldr"
+  },
+  {
+    icon: "🔥",
+    title_en: "Emergency! Elevated thermal heat and optical flame detected near kitchen!",
+    title_ml: "അടുക്കളയിൽ അമിത ചൂടും തീപ്പൊരിയും ഉയരുന്നു! ഉടനടി മുന്നറിയിപ്പ് നൽകണം!",
+    subtitle_en: "Which sensor detects infrared flame waves to trigger emergency alarm?",
+    subtitle_ml: "ഇൻഫ്രാറെഡ് തരംഗങ്ങൾ വഴി തീപിടുത്തം കണ്ടെത്തുന്ന സെൻസർ ഏതാണ്?",
+    correctSensor: "flame"
+  }
+];
+
+function switchGameTab(tabNum) {
+  gameState.activeGame = tabNum;
+  document.querySelectorAll('.game-nav-btn').forEach((btn, idx) => {
+    if (idx + 1 === tabNum) {
+      btn.className = "game-nav-btn active px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/25 flex items-center space-x-2 transition";
+    } else {
+      btn.className = "game-nav-btn px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold bg-slate-900 text-slate-300 hover:text-white border border-white/[0.08] flex items-center space-x-2 transition";
+    }
+  });
+
+  const views = ['gameView1', 'gameView2', 'gameView3', 'gameViewLeaderboard'];
+  views.forEach((vId, idx) => {
+    const el = document.getElementById(vId);
+    if (el) {
+      if (idx + 1 === tabNum) el.classList.remove('hidden');
+      else el.classList.add('hidden');
+    }
+  });
+
+  if (tabNum === 1 && !gameState.wireQuestInterval) {
+    startWireQuestTimer();
+  }
+}
+
+function startWireQuestTimer() {
+  const timerEl = document.getElementById('wireQuestTimer');
+  if (gameState.wireQuestInterval) clearInterval(gameState.wireQuestInterval);
+
+  gameState.wireQuestTimer = 30;
+  gameState.wireQuestInterval = setInterval(() => {
+    gameState.wireQuestTimer -= 1;
+    if (timerEl) timerEl.textContent = `${gameState.wireQuestTimer}s`;
+    if (gameState.wireQuestTimer <= 0) {
+      clearInterval(gameState.wireQuestInterval);
+      gameState.wireQuestInterval = null;
+      const fb = document.getElementById('wireQuestFeedback');
+      if (fb) fb.innerHTML = `<span class="text-amber-400">⏰ Time up! Great attempt! Starting next round...</span>`;
+      setTimeout(() => {
+        gameState.wireQuestMissionIdx = (gameState.wireQuestMissionIdx + 1) % WIRE_QUEST_MISSIONS.length;
+        updateWireQuestMission();
+        startWireQuestTimer();
+      }, 1500);
+    }
+  }, 1000);
+}
+
+function updateWireQuestMission() {
+  const m = WIRE_QUEST_MISSIONS[gameState.wireQuestMissionIdx];
+  const missionText = document.getElementById('wireQuestMissionText');
+  const isEn = state.currentLang === 'en';
+  if (missionText) missionText.textContent = isEn ? m.text_en : m.text_ml;
+}
+
+function handleWireQuestClick(pin) {
+  const m = WIRE_QUEST_MISSIONS[gameState.wireQuestMissionIdx];
+  const fb = document.getElementById('wireQuestFeedback');
+  const scoreEl = document.getElementById('wireQuestScore');
+  const liveUserScore = document.getElementById('liveUserScore');
+
+  if (pin === m.correctPin || (m.correctPin === 'D11' && (pin === 'D11' || pin === '5V'))) {
+    gameState.wireQuestPoints += 100;
+    gameState.userScore += 100;
+    if (scoreEl) scoreEl.textContent = gameState.wireQuestPoints;
+    if (liveUserScore) liveUserScore.textContent = `${gameState.userScore.toLocaleString()} pts`;
+    if (fb) fb.innerHTML = `<span class="text-emerald-400 font-bold">✨ Excellent! Correct pin wired! (+100 Points) ⚡</span>`;
+    
+    setTimeout(() => {
+      gameState.wireQuestMissionIdx = (gameState.wireQuestMissionIdx + 1) % WIRE_QUEST_MISSIONS.length;
+      updateWireQuestMission();
+      if (fb) fb.textContent = "Click the correct pin to wire the circuit before time runs out!";
+    }, 1200);
+  } else {
+    if (fb) fb.innerHTML = `<span class="text-rose-400 font-bold">❌ Incorrect pin. Hint: Check the circuit pinout role!</span>`;
+  }
+}
+
+function handleSensorDefense(chosenSensor) {
+  const crisis = SENSOR_CRISES[gameState.sensorCrisisIdx];
+  const fb = document.getElementById('sensorDefenderFeedback');
+  const scoreEl = document.getElementById('sensorDefenderScore');
+  const liveUserScore = document.getElementById('liveUserScore');
+
+  if (chosenSensor === crisis.correctSensor) {
+    gameState.sensorScore += 120;
+    gameState.userScore += 120;
+    if (scoreEl) scoreEl.textContent = gameState.sensorScore;
+    if (liveUserScore) liveUserScore.textContent = `${gameState.userScore.toLocaleString()} pts`;
+    if (fb) fb.innerHTML = `<span class="text-emerald-400 font-bold">🛡️ Heroic Save! Deployed correct IoT sensor! (+120 Points)</span>`;
+
+    setTimeout(() => {
+      gameState.sensorCrisisIdx = (gameState.sensorCrisisIdx + 1) % SENSOR_CRISES.length;
+      const nextCrisis = SENSOR_CRISES[gameState.sensorCrisisIdx];
+      const isEn = state.currentLang === 'en';
+      document.getElementById('crisisIcon').textContent = nextCrisis.icon;
+      document.getElementById('crisisTitle').textContent = isEn ? nextCrisis.title_en : nextCrisis.title_ml;
+      document.getElementById('crisisSubtitle').textContent = isEn ? nextCrisis.subtitle_en : nextCrisis.subtitle_ml;
+      if (fb) fb.textContent = "Tap the sensor that detects this environmental change!";
+    }, 1500);
+  } else {
+    if (fb) fb.innerHTML = `<span class="text-rose-400 font-bold">⚠️ Warning! That sensor cannot detect this event. Try again!</span>`;
+  }
+}
+
+function handleCarLogicChoice(isCorrect) {
+  const fb = document.getElementById('carGameFeedback');
+  const carSprite = document.getElementById('carSprite');
+  const liveUserScore = document.getElementById('liveUserScore');
+
+  if (isCorrect) {
+    gameState.carGameScore += 150;
+    gameState.userScore += 150;
+    if (liveUserScore) liveUserScore.textContent = `${gameState.userScore.toLocaleString()} pts`;
+
+    if (carSprite) {
+      carSprite.style.transform = 'translateY(-25px) scale(1.05)';
+      setTimeout(() => {
+        carSprite.style.transform = 'translateY(0) scale(1)';
+      }, 700);
+    }
+
+    if (fb) fb.innerHTML = `<span class="text-emerald-400 font-bold">🚗 Brilliant! Smart car executed steerRight() and dodged obstacle! (+150 Pts)</span>`;
+  } else {
+    if (carSprite) {
+      carSprite.style.transform = 'translateX(15px)';
+      setTimeout(() => {
+        carSprite.style.transform = 'translateX(0)';
+      }, 400);
+    }
+    if (fb) fb.innerHTML = `<span class="text-rose-400 font-bold">💥 Crash alert! Driving full speed into obstacle is unsafe! Choose Option A.</span>`;
+  }
+}
+
+// =========================================================================
+// STUDENT & TEACHER PORTAL ROLE-BASED SYSTEM
+// =========================================================================
+
+function switchPortalRole(role) {
+  const btnStudent = document.getElementById('btnRoleStudent');
+  const btnTeacher = document.getElementById('btnRoleTeacher');
+  const studentView = document.getElementById('studentPortalView');
+  const teacherView = document.getElementById('teacherPortalView');
+
+  if (role === 'student') {
+    if (btnStudent) btnStudent.className = "px-5 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-md flex items-center space-x-2 transition";
+    if (btnTeacher) btnTeacher.className = "px-5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center space-x-2 transition";
+    if (studentView) studentView.classList.remove('hidden');
+    if (teacherView) teacherView.classList.add('hidden');
+  } else {
+    if (btnTeacher) btnTeacher.className = "px-5 py-2.5 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 shadow-md flex items-center space-x-2 transition";
+    if (btnStudent) btnStudent.className = "px-5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white flex items-center space-x-2 transition";
+    if (teacherView) teacherView.classList.remove('hidden');
+    if (studentView) studentView.classList.add('hidden');
+  }
+}
+
+function quickLogin(preset) {
+  switchTab('portal');
+  if (preset === 'student') {
+    switchPortalRole('student');
+    const nameEl = document.getElementById('studentNameDisplay');
+    if (nameEl) nameEl.textContent = "Ayesha Fathima";
+    gameState.currentUser = { role: 'student', name: 'Ayesha Fathima', id: 'KL-STU-2026-88' };
+    alert("👨‍🎓 Logged in as Student: Ayesha Fathima (Class 5 • Ernakulam)
+Tutors: Alfina A & Salma A R");
+  } else if (preset === 'teacher_alfina') {
+    switchPortalRole('teacher');
+    const nameEl = document.getElementById('teacherNameDisplay');
+    if (nameEl) nameEl.textContent = "Tutor Alfina A";
+    gameState.currentUser = { role: 'teacher', name: 'Alfina A', title: 'Lead Robotics & IoT Tutor' };
+    alert("👩‍🏫 Logged in as Teacher: Tutor Alfina A (Lead Robotics & IoT Mentor)");
+  } else if (preset === 'teacher_salma') {
+    switchPortalRole('teacher');
+    const nameEl = document.getElementById('teacherNameDisplay');
+    if (nameEl) nameEl.textContent = "Tutor Salma A R";
+    gameState.currentUser = { role: 'teacher', name: 'Salma A R', title: 'Curriculum & Innovation Tutor' };
+    alert("👩‍🏫 Logged in as Teacher: Tutor Salma A R (Curriculum & Innovation Mentor)");
+  }
+}
+
+function logoutPortal() {
+  alert("You have safely logged out of Hello2-IoT Portal.");
+  switchTab('home');
+}
+
+function teacherIssueCert(studentName, track) {
+  const inputCertName = document.getElementById('inputCertName');
+  const certStudentName = document.getElementById('certStudentName');
+  const selectCertTrack = document.getElementById('selectCertTrack');
+  const certTrackBadge = document.getElementById('certTrackBadge');
+
+  if (inputCertName) inputCertName.value = studentName;
+  if (certStudentName) certStudentName.textContent = studentName;
+  if (selectCertTrack) selectCertTrack.value = track;
+  if (certTrackBadge) certTrackBadge.textContent = track;
+
+  switchTab('workshops');
+  setTimeout(() => {
+    const certArea = document.getElementById('certificatePrintableArea');
+    if (certArea) certArea.scrollIntoView({ behavior: 'smooth' });
+    alert(`🎓 Certificate Ready for: ${studentName}!\nTrack: ${track}\nSigned by Tutors: Alfina A & Salma A R.`);
+  }, 300);
+}
+
+function sendMentorBroadcast() {
+  const input = document.getElementById('mentorBroadcastInput');
+  if (!input || !input.value.trim()) {
+    alert("Please enter an announcement message.");
+    return;
+  }
+  const msg = input.value.trim();
+  alert(`📢 Announcement Broadcasted to all 14 Districts:\n"${msg}"\nFrom: Tutors Alfina A & Salma A R`);
+  input.value = '';
+}
+
+// =========================================================================
+// ASSESSMENT ZONE AUTOMATIC GRADING & CERTIFICATE ISSUE FLOW
+// =========================================================================
+
+function handleAssessmentSubmit(event) {
+  event.preventDefault();
+  const form = document.getElementById('assessmentForm');
+  const formData = new FormData(form);
+
+  // Correct answers: Q1: A, Q2: A, Q3: A, Q4: A, Q5: A
+  let correctCount = 0;
+  if (formData.get('q1') === 'A') correctCount += 1;
+  if (formData.get('q2') === 'A') correctCount += 1;
+  if (formData.get('q3') === 'A') correctCount += 1;
+  if (formData.get('q4') === 'A') correctCount += 1;
+  if (formData.get('q5') === 'A') correctCount += 1;
+
+  const percentage = (correctCount / 5) * 100;
+  const resultCard = document.getElementById('assessmentResultCard');
+  const scoreDisplay = document.getElementById('assessmentScoreDisplay');
+
+  if (resultCard && scoreDisplay) {
+    resultCard.classList.remove('hidden');
+    scoreDisplay.textContent = `Your Score: ${percentage}% (${correctCount}/5 Correct)`;
+
+    if (percentage >= 80) {
+      resultCard.className = "glass-panel rounded-3xl p-8 border-2 border-emerald-500/50 text-center space-y-4 shadow-2xl relative overflow-hidden bg-emerald-950/20";
+    } else {
+      resultCard.className = "glass-panel rounded-3xl p-8 border-2 border-rose-500/50 text-center space-y-4 shadow-2xl relative overflow-hidden bg-rose-950/20";
+      scoreDisplay.textContent += " - Passing is 80%. Review videos & retake!";
+    }
+
+    resultCard.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function navigateToCertWithStudent() {
+  const inputCertName = document.getElementById('inputCertName');
+  const certStudentName = document.getElementById('certStudentName');
+  const studentName = (gameState.currentUser && gameState.currentUser.name) ? gameState.currentUser.name : "Ayesha Fathima";
+
+  if (inputCertName) inputCertName.value = studentName;
+  if (certStudentName) certStudentName.textContent = studentName;
+
+  switchTab('workshops');
+  setTimeout(() => {
+    const certArea = document.getElementById('certificatePrintableArea');
+    if (certArea) certArea.scrollIntoView({ behavior: 'smooth' });
+  }, 300);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
