@@ -1425,6 +1425,13 @@ function closeOrderModal() {
   }
 }
 
+
+// Global Set Language Handler
+window.setLanguage = function(lang) {
+  state.currentLang = lang;
+  updateLanguageUI();
+};
+
 // COMPREHENSIVE FULL BILINGUAL LANGUAGE ENGINE (ML / EN)
 function updateLanguageUI() {
   const lang = state.currentLang;
@@ -1432,30 +1439,28 @@ function updateLanguageUI() {
   const dict = TRANSLATIONS[lang] || TRANSLATIONS['ml'];
 
   // Update language toggle buttons
-  if (elements.langBtns) {
-    elements.langBtns.forEach(btn => {
-      const bLang = btn.getAttribute('data-lang');
-      if (bLang === lang) {
-        btn.className = "lang-btn px-2.5 py-1 text-xs rounded-full font-bold bg-indigo-600 text-white shadow-sm";
-      } else {
-        btn.className = "lang-btn px-2.5 py-1 text-xs rounded-full font-medium text-slate-400 hover:text-white";
-      }
-    });
-  }
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const bLang = btn.getAttribute('data-lang');
+    if (bLang === lang) {
+      btn.className = "lang-btn px-2.5 py-1 text-xs rounded-full font-bold bg-indigo-600 text-white shadow-sm transition";
+    } else {
+      btn.className = "lang-btn px-2.5 py-1 text-xs rounded-full font-medium text-slate-400 hover:text-white transition";
+    }
+  });
 
-  // Update all elements with data-ml-html and data-en-html
+  // Update elements with data-ml-html and data-en-html
   document.querySelectorAll('[data-ml-html]').forEach(el => {
     const html = el.getAttribute(`data-${lang}-html`);
     if (html) el.innerHTML = html;
   });
 
-  // Update all elements with data-ml and data-en
-  document.querySelectorAll('[data-ml]').forEach(el => {
+  // Update elements with data-ml and data-en (skipping if data-ml-html is present)
+  document.querySelectorAll('[data-ml]:not([data-ml-html])').forEach(el => {
     const text = el.getAttribute(`data-${lang}`);
     if (text) el.textContent = text;
   });
 
-  // Update all placeholders with data-ml-placeholder and data-en-placeholder
+  // Update placeholders
   document.querySelectorAll('[data-ml-placeholder]').forEach(el => {
     const ph = el.getAttribute(`data-${lang}-placeholder`);
     if (ph) el.setAttribute('placeholder', ph);
@@ -1471,7 +1476,16 @@ function updateLanguageUI() {
   document.documentElement.lang = lang;
 
   // Refresh current project view in new language
-  renderProject(state.selectedProject);
+  if (typeof renderProject === 'function') {
+    renderProject(state.selectedProject);
+  }
+
+  // Refresh active game text if game view is open
+  if (typeof updateWireQuestMission === 'function') {
+    updateWireQuestMission();
+  }
+
+  if (window.lucide) lucide.createIcons();
 }
 
 function attachEventListeners() {
