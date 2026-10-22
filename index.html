@@ -12,6 +12,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" onerror="this.onerror=null;this.href='assets/css/style.css';">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script>
@@ -253,7 +254,8 @@
 
             <!-- Featured Image Container (User Uploaded Photo) -->
             <div class="relative rounded-2xl overflow-hidden border border-white/[0.12] bg-slate-950 shadow-2xl group-hover:border-cyan-400/50 transition duration-500">
-              <img src="assets/images/student_iot_car.jpg" 
+              <img src="student_iot_car.jpg" 
+                   onerror="this.onerror=null;this.src='assets/images/student_iot_car.jpg';"
                    alt="Kerala Student Innovators showcasing IoT Smart Car" 
                    class="w-full h-auto object-cover max-h-[480px] transform group-hover:scale-[1.02] transition duration-700">
               
@@ -1477,8 +1479,15 @@
     </div>
   </footer>
 
-  <!-- Application Logic -->
-  <script src="assets/js/app.js"></script>
+  <!-- Application Logic (Supports root flat upload & assets/ folder) -->
+  <script src="app.js"></script>
+  <script>
+    if (typeof initApp === 'undefined') {
+      var fallbackScript = document.createElement('script');
+      fallbackScript.src = 'assets/js/app.js';
+      document.body.appendChild(fallbackScript);
+    }
+  </script>
 
 </body>
 </html>
