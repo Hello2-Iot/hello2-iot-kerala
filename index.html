@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script>
+    window.tailwind = window.tailwind || {};
     tailwind.config = {
       theme: {
         extend: {
@@ -63,45 +64,45 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation Tabs -->
-        <nav class="hidden lg:flex items-center space-x-1 bg-slate-900/60 p-1.5 rounded-2xl border border-white/[0.06]">
-          <button data-tab="home" class="nav-tab active px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+        <!-- Navigation Tabs (Visible on All Screen Sizes) -->
+        <nav class="hidden md:flex items-center space-x-1 bg-slate-900/80 p-1.5 rounded-2xl border border-white/[0.08] overflow-x-auto scrollbar-none">
+          <button onclick="switchTab('home')" data-tab="home" class="nav-tab active px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="home" class="w-4 h-4"></i>
             <span data-ml="ഹോം" data-en="Home">ഹോം</span>
           </button>
-          <button data-tab="projects" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('projects')" data-tab="projects" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="layout-grid" class="w-4 h-4"></i>
             <span data-ml="പ്രോജക്ട് ലാബ്" data-en="Project Lab">പ്രോജക്ട് ലാബ്</span>
           </button>
-          <button data-tab="wokwi" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('wokwi')" data-tab="wokwi" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="cpu" class="w-4 h-4"></i>
             <span data-ml="Wokwi ലാബ്" data-en="Wokwi Lab">Wokwi ലാബ്</span>
           </button>
-          <button data-tab="videos" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('videos')" data-tab="videos" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="play-circle" class="w-4 h-4"></i>
             <span data-ml="മലയാളം വീഡിയോകൾ" data-en="Video Academy">മലയാളം വീഡിയോകൾ</span>
           </button>
-          <button data-tab="kits" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('kits')" data-tab="kits" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="package" class="w-4 h-4"></i>
             <span data-ml="കിറ്റ് & പ്ലാൻ" data-en="Kits & Plans">കിറ്റ് & പ്ലാൻ</span>
           </button>
-          <button data-tab="workshops" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('workshops')" data-tab="workshops" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="calendar" class="w-4 h-4"></i>
             <span data-ml="ലൈവ് ബാച്ചുകൾ" data-en="Live Batches">ലൈവ് ബാച്ചുകൾ</span>
           </button>
-                    <button data-tab="games" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('games')" data-tab="games" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="gamepad-2" class="w-4 h-4 text-amber-400"></i>
             <span data-ml="ഗെയിംസ് സോൺ" data-en="Games Zone">ഗെയിംസ് സോൺ</span>
           </button>
-          <button data-tab="assessment" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('assessment')" data-tab="assessment" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="clipboard-check" class="w-4 h-4 text-emerald-400"></i>
             <span data-ml="അസസ്സ്മെന്റ്" data-en="Assessment">അസസ്സ്മെന്റ്</span>
           </button>
-          <button data-tab="portal" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('portal')" data-tab="portal" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="user-check" class="w-4 h-4 text-cyan-400"></i>
             <span data-ml="പോർട്ടൽ ലോഗിൻ" data-en="Portal Login">പോർട്ടൽ ലോഗിൻ</span>
           </button>
-          <button data-tab="faq" class="nav-tab px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] transition flex items-center space-x-1.5">
+          <button onclick="switchTab('faq')" data-tab="faq" class="nav-tab px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/[0.05] whitespace-nowrap transition flex items-center space-x-1.5">
             <i data-lucide="help-circle" class="w-4 h-4"></i>
             <span data-ml="FAQ" data-en="FAQ">FAQ</span>
           </button>
@@ -127,6 +128,16 @@
       </div>
     </div>
   </header>
+
+  <!-- Fast Sub-Navigation Bar for Mobile & All Screens -->
+  <div class="md:hidden bg-slate-950/95 border-b border-white/[0.08] px-3 py-2 overflow-x-auto flex items-center space-x-2 sticky top-20 z-30 backdrop-blur-md scrollbar-none">
+    <button onclick="switchTab('home')" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 text-slate-200 border border-white/10 whitespace-nowrap">🏠 Home</button>
+    <button onclick="switchTab('projects')" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 text-slate-200 border border-white/10 whitespace-nowrap">🔬 Projects</button>
+    <button onclick="switchTab('games')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500/20 border border-amber-500/40 text-amber-300 whitespace-nowrap">🎮 Games Zone</button>
+    <button onclick="switchTab('assessment')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 whitespace-nowrap">📝 Assessment</button>
+    <button onclick="switchTab('portal')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-500/20 border border-indigo-500/40 text-cyan-300 whitespace-nowrap">👥 Portal</button>
+    <button onclick="switchTab('workshops')" class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 text-slate-200 border border-white/10 whitespace-nowrap">🎓 Certificate</button>
+  </div>
 
   <!-- MAIN WRAPPER -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">

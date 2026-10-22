@@ -911,7 +911,8 @@ function cacheElements() {
 // Tab Navigation
 function switchTab(tabName) {
   state.currentTab = tabName;
-  elements.tabs.forEach(tab => {
+  const tabs = (elements && elements.tabs && elements.tabs.length) ? elements.tabs : document.querySelectorAll('.nav-tab');
+  tabs.forEach(tab => {
     if (tab.getAttribute('data-tab') === tabName) {
       tab.classList.add('active');
     } else {
@@ -919,7 +920,8 @@ function switchTab(tabName) {
     }
   });
 
-  elements.sections.forEach(sec => {
+  const sections = (elements && elements.sections && elements.sections.length) ? elements.sections : document.querySelectorAll('.content-section');
+  sections.forEach(sec => {
     if (sec.id === `section-${tabName}`) {
       sec.classList.remove('hidden');
     } else {
@@ -930,6 +932,7 @@ function switchTab(tabName) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (window.lucide) lucide.createIcons();
 }
+window.switchTab = switchTab;
 
 // Circuit Connection Renderer for Project Lab
 function renderCircuitDiagram(p, isEn) {
@@ -1490,16 +1493,18 @@ function updateLanguageUI() {
 
 function attachEventListeners() {
   // Navigation tabs
-  elements.tabs.forEach(tab => {
+  const tabs = (elements && elements.tabs && elements.tabs.length) ? elements.tabs : document.querySelectorAll('.nav-tab');
+  tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
       e.preventDefault();
       const tabName = tab.getAttribute('data-tab');
-      switchTab(tabName);
+      if (tabName) switchTab(tabName);
     });
   });
 
   // Language buttons (Toggle between Malayalam and English)
-  elements.langBtns.forEach(btn => {
+  const langBtns = (elements && elements.langBtns && elements.langBtns.length) ? elements.langBtns : document.querySelectorAll('.lang-btn');
+  langBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       state.currentLang = btn.getAttribute('data-lang');
       updateLanguageUI();
@@ -2016,8 +2021,7 @@ function quickLogin(preset) {
     const nameEl = document.getElementById('studentNameDisplay');
     if (nameEl) nameEl.textContent = "Ayesha Fathima";
     gameState.currentUser = { role: 'student', name: 'Ayesha Fathima', id: 'KL-STU-2026-88' };
-    alert("👨‍🎓 Logged in as Student: Ayesha Fathima (Class 5 • Ernakulam)
-Tutors: Alfina A & Salma A R");
+    alert("👨‍🎓 Logged in as Student: Ayesha Fathima (Class 5 • Ernakulam)\\nTutors: Alfina A & Salma A R");
   } else if (preset === 'teacher_alfina') {
     switchPortalRole('teacher');
     const nameEl = document.getElementById('teacherNameDisplay');
@@ -2119,7 +2123,28 @@ function navigateToCertWithStudent() {
   }, 300);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// Global Exports for all inline onclick handlers
+window.switchTab = switchTab;
+window.setLanguage = setLanguage;
+window.initApp = initApp;
+window.switchGameTab = switchGameTab;
+window.handleWireQuestClick = handleWireQuestClick;
+window.handleSensorDefense = handleSensorDefense;
+window.handleCarLogicChoice = handleCarLogicChoice;
+window.switchPortalRole = switchPortalRole;
+window.quickLogin = quickLogin;
+window.logoutPortal = logoutPortal;
+window.teacherIssueCert = teacherIssueCert;
+window.sendMentorBroadcast = sendMentorBroadcast;
+window.handleAssessmentSubmit = handleAssessmentSubmit;
+window.navigateToCertWithStudent = navigateToCertWithStudent;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initApp();
+    if (window.lucide) lucide.createIcons();
+  });
+} else {
   initApp();
   if (window.lucide) lucide.createIcons();
-});
+}
